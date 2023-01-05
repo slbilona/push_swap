@@ -1,6 +1,6 @@
 SRCS = main.c \
 
-LIBFT = Libft/libft.a
+LIBFT = Libft_clone/libft.a
 
 OBJS = $(SRCS:.c=.o)
 
@@ -15,15 +15,15 @@ NAME = push_swap
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	make -C Libft
+	make -C Libft_clone
 	$(CC) $(OBJS) $(LIBFT) -o $(NAME) -g
 
 clean : 
-	make clean -C Libft
+	make clean -C Libft_clone
 	$(RM) *.o
 
 fclean :
-	make fclean -C Libft
+	make fclean -C Libft_clone
 	$(RM) *.o $(NAME)
 
 re : fclean all

@@ -1,6 +1,6 @@
 #include "header.h"
 
-int verif(int ac, char **av)
+int *verif(int ac, char **av)
 {
 	int *nombres;
 	int i;
@@ -12,7 +12,7 @@ int verif(int ac, char **av)
 		i = 0;
 		while(av[j][i])
 			if(ft_isalpha(av[j][i++]))
-				return (0);
+				return (NULL);
 		j++;
 	}
 	i = 0;
@@ -25,14 +25,13 @@ int verif(int ac, char **av)
 			i++;
 			j++;
 		}
-	/*i = 0;
+	i = 0;
 	j = 1;
 	while(j++ < ac)
-		printf("%d, ", nombres[i++]);*/
+		printf("%d, ", nombres[i++]);
 	if(!verif_2(nombres, ac))
-		return 0;
-	free(nombres);
-	return (1);
+		return (NULL);
+	return (nombres);
 }
 
 int verif_2(int *nombres, int ac)
@@ -59,15 +58,44 @@ int verif_2(int *nombres, int ac)
 	return 1;
 }
 
-void ft_push_swap(int ac, char **av)
+int ft_ordre(int ac, int *nombres)
 {
+	int i;
+
+	i = 0;
+	while(i < (ac - 2))
+	{
+		if(nombres[i] > nombres[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int ft_push_swap(int ac, char **av)
+{
+	int *nombres;
 	if (1 < ac)
 	{
-		if(verif(ac, av))
-			printf("🧡 you go girl 🧡\n");
-		else
+		nombres = verif(ac, av);
+		if(!nombres)
+		{
 			printf("🙁 dsl ma belle 🙁\n");
+			return (0);
+		}
+		if(!verif_2(nombres, ac))
+		{
+			printf("🙁 dsl ma belle 🙁\n");
+			return (0);
+		}
+		if(!ft_ordre(ac, nombres))
+		{
+			printf("🙁 pas dans l'ordre ma jolie 🙁\n");
+			return (0);
+		}
 	}
+	printf("🧡 you go girl 🧡\n");
+	return 1;
 }
 
 int main(int ac, char **av)
