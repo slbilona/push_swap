@@ -1,4 +1,6 @@
 SRCS = main.c \
+	checkers.c \
+	ft_atoi_long_int.c \
 
 LIBFT = Libft_clone/libft.a
 

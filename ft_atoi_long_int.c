@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi_long_int.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilselbon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/06 16:20:44 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/01/06 16:20:46 by ilselbon         ###   ########.fr       */
+/*   Created: 2022/11/08 17:43:38 by ilselbon          #+#    #+#             */
+/*   Updated: 2023/01/06 13:28:31 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include <stdlib.h>
 
-int	ft_push_swap(int ac, char **av)
+long int	ft_atoi_long_int(const char *nptr)
 {
-	long int	*nombres;
+	long int	result;
+	int			i;
+	int			sign;
 
-	if (ac <= 1)
-		return (1);
-	nombres = ft_verif(ac, av);
-	if (!nombres)
-		return (1);
-	if (!ft_ordre(ac, nombres))
+	sign = 1;
+	i = 0;
+	result = 0;
+	while ((9 <= nptr[i] && nptr[i] <= 13) || nptr[i] == ' ')
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
 	{
-		printf("🙁 pas dans l'ordre ma jolie 🙁\n");
-		return (0);
+		if (nptr[i] == '-')
+			sign = sign * -1;
+		i++;
 	}
-	return (0);
-}
-
-int	main(int ac, char **av)
-{
-	ft_push_swap(ac, av);
-	return (0);
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		result = result * 10 + nptr[i] - 48;
+		i++;
+	}
+	return (result * sign);
 }
