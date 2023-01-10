@@ -1,6 +1,8 @@
 SRCS = main.c \
 	checkers.c \
 	ft_atoi_long_int.c \
+	listes_chainees.c \
+	mouvements.c \
 
 LIBFT = Libft_clone/libft.a
 

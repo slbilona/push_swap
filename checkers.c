@@ -18,21 +18,21 @@ long int	*ft_verif(int ac, char **av)
 
 	if (!ft_chiffres(av))
 	{
-		printf("🙁 dsl ma belle 🙁\n");
+		//printf("🙁 dsl ma belle 🙁\n");
 		return (NULL);
 	}
 	nombres = ft_int_nombres(ac, av);
 	if (!nombres)
 	{
-		printf("🙁 dsl ma belle 🙁\n");
+		//printf("🙁 dsl ma belle 🙁\n");
 		return (0);
 	}
 	if (!ft_doublons(nombres, ac))
 	{
-		printf("🙁 dsl ma belle 🙁\n");
+		//printf("🙁 dsl ma belle 🙁\n");
 		return (0);
 	}
-	printf("🧡 you go girl 🧡\n");
+	//printf("🧡 you go girl 🧡\n");
 	return (nombres);
 }
 
@@ -45,7 +45,7 @@ int	ft_chiffres(char **av)
 	while (av[j])
 	{
 		i = 0;
-		if(av[j][i] == '-' || av[j][i] == '+')
+		if (av[j][i] == '-' || av[j][i] == '+')
 				i++;
 		while (av[j][i])
 		{
@@ -65,26 +65,26 @@ long int	*ft_int_nombres(int ac, char **av)
 	int			i;
 	int			j;
 
-	i = 0;
+	i = ac -2;
 	j = 1;
 	nombres = malloc(sizeof(long int) * (ac - 1));
 	if (!nombres)
 		return (NULL);
-	while (j < ac)
+	while (j < ac && i >= 0)
 	{
 		nombres[i] = ft_atoi_long_int(av[j]);
-		if (nombres[i] > 2147483648 || nombres[i++] < -2147483647)
+		if (nombres[i] > 2147483648 || nombres[i--] < -2147483647)
 		{
 			free(nombres);
 			return (NULL);
 		}
 		j++;
 	}
-	/*i = 0;
-	j = 1;
-	while(j++ < ac)
-		printf("%ld, ", nombres[i++]);
-	printf("\n");*/
+	// i = 0;
+	// j = 1;
+	// while (j++ < ac)
+	// 	printf("%ld, ", nombres[i++]);
+	// printf("\n");
 	return (nombres);
 }
 
@@ -119,11 +119,8 @@ int	ft_ordre(int ac, long int *nombres)
 	i = 0;
 	while (i < (ac - 2))
 	{
-		if (nombres[i] > nombres[i + 1])
-		{
-			free(nombres);
+		if (nombres[i] < nombres[i + 1])
 			return (0);
-		}
 		i++;
 	}
 	return (1);

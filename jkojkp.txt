@@ -1,0 +1,7 @@
+etape 1 : parsing
+etape 2 : initialiser la liste chainee
+etape 3 : 
+
+SA :
+- verifier si il y a plus de 2 elements dans la pile
+

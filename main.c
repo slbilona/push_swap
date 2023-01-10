@@ -15,6 +15,9 @@
 int	ft_push_swap(int ac, char **av)
 {
 	long int	*nombres;
+	t_list		*pile_a;
+	t_list *test;
+	// t_list		*pile_b;
 
 	if (ac <= 1)
 		return (1);
@@ -23,7 +26,30 @@ int	ft_push_swap(int ac, char **av)
 		return (1);
 	if (!ft_ordre(ac, nombres))
 	{
-		printf("🙁 pas dans l'ordre ma jolie 🙁\n");
+		//printf("🙁 pas dans l'ordre ma jolie 🙁\n");
+		pile_a = ft_pile_a(nombres, ac);
+		// test = pile_a;
+		// // printf("pile a :");
+		// // while (test)
+		// // {
+		// // 	printf("%d, ", test->nombre);
+		// // 	test = test->next;
+		// // }
+		// // printf("\n");
+		pile_a = ft_sa_sb(pile_a);
+		test = pile_a;
+		printf("pile a :");
+		while (test)
+		{
+			printf("%d, ", test->nombre);
+			test = test->next;
+		}
+		printf("\n");
+		return (0);
+	}
+	else
+	{
+		free(nombres);
 		return (0);
 	}
 	return (0);
