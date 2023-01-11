@@ -24,15 +24,21 @@ typedef struct s_list
 }			t_list;
 
 int			ft_push_swap(int ac, char **av);
-long int	*ft_verif(int ac, char **av);
-long int	*ft_int_nombres(int ac, char **av);
 int			ft_chiffres(char **av);
 int			ft_doublons(long int *nombres, int ac);
 int			ft_ordre(int ac, long int *nombres);
-long int	ft_atoi_long_int(const char *nptr);
-t_list		*ft_lstnew(int content);
+int			ft_lstsize(t_list *lst);
 void		ft_lstadd_front(t_list **lst, t_list *new);
+t_list		*ft_lstnew(int content);
 t_list		*ft_pile_a(long int *nombres, int ac);
 t_list		*ft_sa_sb(t_list *pile);
+t_list		*ft_pa_pb(t_list *pile1, t_list *pile_b);
+t_list		*ft_lstlast(t_list *lst);
+t_list		*ft_ra_rb(t_list *pile);
+t_list *ft_rra_rrb(t_list *pile);
+t_list *ft_almostlast(t_list *lst);
+long int	*ft_verif(int ac, char **av);
+long int	*ft_int_nombres(int ac, char **av);
+long int	ft_atoi_long_int(const char *nptr);
 
 #endif
