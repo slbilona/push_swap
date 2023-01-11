@@ -15,7 +15,9 @@
 int	ft_push_swap(int ac, char **av)
 {
 	long int	*nombres;
-	t_list		**pile_a;
+	void *premier_a;
+	void *premier_b;
+	t_list *pile_a;
 	t_list		*test;
 	// t_list		*pile_b;
 
@@ -26,8 +28,10 @@ int	ft_push_swap(int ac, char **av)
 		return (1);
 	if (!ft_ordre(ac, nombres))
 	{
-		*pile_a = ft_pile_a(nombres, ac);
-		test = *pile_a;
+		pile_a = ft_pile_a(nombres, ac);
+		premier_a = pile_a;
+		premier_b = NULL;
+		test = pile_a;
 		printf("pile a :");
 		while (test)
 		{
@@ -36,17 +40,9 @@ int	ft_push_swap(int ac, char **av)
 		}
 		printf("\n");
 		pile_a = ft_sa_sb(pile_a);
-		// test = pile_a;
-		// printf("pile a :");
-		// while (test)
-		// {
-		// 	printf("%d, ", test->nombre);
-		// 	test = test->next;
-		// }
-		// printf("\n");
 		// pile_a = ft_ra_rb(pile_a);
 		// pile_a = ft_rra_rrb(pile_a);
-		test = *pile_a;
+		test = pile_a;
 		printf("pile a :");
 		while (test)
 		{
@@ -68,4 +64,18 @@ int	main(int ac, char **av)
 {
 	ft_push_swap(ac, av);
 	return (0);
+}
+
+void afficher_pile(t_list *pile, char c)
+{
+	t_list *test;
+	test = pile;
+	
+	printf("pile %c :");
+	while (test)
+	{
+		printf("%d, ", test->nombre);
+		test = test->next;
+	}
+	printf("\n");
 }
