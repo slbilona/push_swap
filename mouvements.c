@@ -21,13 +21,15 @@ void ft_pa_pb(t_list **pile1, t_list **pile2)
 	t_list *chaine1;
 	t_list *chaine2;
 
-	if(!*pile1)
-		return (NULL);
-	chaine1 = *pile1;
-	chaine2 = *pile2;
-	*pile2 = chaine1;
-	*pile1 = chaine1->next;
-	chaine1->next = chaine2;	
+	if(*pile1)
+	{
+		chaine1 = *pile1;
+		chaine2 = *pile2;
+		*pile2 = chaine1;
+		*pile1 = chaine1->next;
+		chaine1->next = chaine2;
+	}
+	printf("pa\n");
 }
 
 t_list	*ft_ra_rb(t_list *pile)
@@ -45,23 +47,22 @@ t_list	*ft_ra_rb(t_list *pile)
 	return (chaine2);
 }
 
-t_list	*ft_rra_rrb(t_list *pile)
+void	ft_rra_rrb(t_list **pile)
 {
 	t_list	*chaine1;
 	t_list	*av_dernier;
 	t_list	*dernier;
 
-	if (ft_lstsize(pile) < 3)
+	if (ft_lstsize(*pile) > 3)
 	{
-		return (NULL);
+		dernier = ft_lstlast(*pile);
+		chaine1 = *pile;
+		av_dernier = ft_almostlast(*pile);
+		av_dernier->next = NULL;
+		dernier->next = chaine1;
+		*pile = dernier;
+		printf("rra\n");
 	}
-	dernier = ft_lstlast(pile);
-	chaine1 = pile;
-	av_dernier = ft_almostlast(pile);
-	av_dernier->next = NULL;
-	dernier->next = chaine1;
-	printf("rra\n");
-	return (dernier);
 }
 
 t_list	*ft_almostlast(t_list *lst)

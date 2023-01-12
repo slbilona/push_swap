@@ -12,15 +12,31 @@
 
 #include "header.h"
 
+void afficher_pile(t_list **pile, char c)
+{
+	t_list *test;
+
+	test = *pile;
+	printf("pile %c :", c);
+	while (test)
+	{
+		printf("%d, ", test->nombre);
+		test = test->next;
+	}
+	printf("\n");
+}
+
 int	ft_push_swap(int ac, char **av)
 {
 	long int	*nombres;
-	void *premier_a;
-	void *premier_b;
+	t_list *premier_a;
+	t_list *premier_b;
 	t_list *pile_a;
-	t_list		*test;
-	// t_list		*pile_b;
+	// t_list *pile_b;
 
+	// pile_b = malloc(sizeof(*pile_b));
+	// pile_b->nombre = 10;
+	// pile_b->next = NULL;
 	if (ac <= 1)
 		return (1);
 	nombres = ft_verif(ac, av);
@@ -31,25 +47,20 @@ int	ft_push_swap(int ac, char **av)
 		pile_a = ft_pile_a(nombres, ac);
 		premier_a = pile_a;
 		premier_b = NULL;
-		test = pile_a;
-		printf("pile a :");
-		while (test)
-		{
-			printf("%d, ", test->nombre);
-			test = test->next;
-		}
-		printf("\n");
+		afficher_pile(&premier_a, 'a');
+		afficher_pile(&premier_b, 'b');
 		pile_a = ft_sa_sb(pile_a);
-		// pile_a = ft_ra_rb(pile_a);
-		// pile_a = ft_rra_rrb(pile_a);
-		test = pile_a;
-		printf("pile a :");
-		while (test)
-		{
-			printf("%d, ", test->nombre);
-			test = test->next;
-		}
-		printf("\n");
+		afficher_pile(&premier_a, 'a');
+		afficher_pile(&premier_b, 'b');
+		pile_a = ft_ra_rb(pile_a);
+		afficher_pile(&premier_a, 'a');
+		afficher_pile(&premier_b, 'b');
+		ft_rra_rrb(&premier_a);
+		afficher_pile(&premier_a, 'a');
+		afficher_pile(&premier_b, 'b');		
+		ft_pa_pb(&premier_a, &premier_b);
+		afficher_pile(&premier_a, 'a');
+		afficher_pile(&premier_b, 'b');
 		return (0);
 	}
 	else
@@ -66,16 +77,3 @@ int	main(int ac, char **av)
 	return (0);
 }
 
-void afficher_pile(t_list *pile, char c)
-{
-	t_list *test;
-	test = pile;
-	
-	printf("pile %c :");
-	while (test)
-	{
-		printf("%d, ", test->nombre);
-		test = test->next;
-	}
-	printf("\n");
-}
