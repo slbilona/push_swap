@@ -6,4 +6,7 @@ SA :
 - verifier si il y a plus de 2 elements dans la pile
 
 mouvements : 
-- midifier les fonctions pour quelles prennent en parametre des t_list** et non t_list*
+- modifier les fonctions pour quelles prennent en parametre des t_list** et non t_list*
+
+RRA :
+- modifier l'action s'il n'y a que 2 chaines

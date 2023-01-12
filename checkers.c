@@ -40,22 +40,33 @@ int	ft_chiffres(char **av)
 {
 	int	j;
 	int	i;
+	int o;
 
 	j = 1;
+	o = 0;
 	while (av[j])
 	{
 		i = 0;
 		if (av[j][i] == '-' || av[j][i] == '+')
-				i++;
+		{
+			o++;
+			i++;
+		}
 		while (av[j][i])
 		{
 			if (ft_isdigit(av[j][i]) == 1)
+			{
 				i++;
+				o--;
+			}
 			else
 				return (0);
 		}
+		if (o == 1)
+			return (0);
 		j++;
 	}
+	
 	return (1);
 }
 

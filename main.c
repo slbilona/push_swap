@@ -41,7 +41,10 @@ int	ft_push_swap(int ac, char **av)
 		return (1);
 	nombres = ft_verif(ac, av);
 	if (!nombres)
+	{
+		printf("error");
 		return (1);
+	}
 	if (!ft_ordre(ac, nombres))
 	{
 		pile_a = ft_pile_a(nombres, ac);
@@ -49,18 +52,30 @@ int	ft_push_swap(int ac, char **av)
 		premier_b = NULL;
 		afficher_pile(&premier_a, 'a');
 		afficher_pile(&premier_b, 'b');
-		pile_a = ft_sa_sb(pile_a);
-		afficher_pile(&premier_a, 'a');
-		afficher_pile(&premier_b, 'b');
-		pile_a = ft_ra_rb(pile_a);
-		afficher_pile(&premier_a, 'a');
-		afficher_pile(&premier_b, 'b');
-		ft_rra_rrb(&premier_a);
+		ft_sa_sb(&premier_a, 'a');
+		// afficher_pile(&premier_a, 'a');
+		// afficher_pile(&premier_b, 'b');
+		// ft_sa_sb(&premier_b, 'b');
+		// afficher_pile(&premier_a, 'a');
+		// afficher_pile(&premier_b, 'b');
+		// ft_ra_rb(&premier_a, 'a');
+		// afficher_pile(&premier_a, 'a');
+		// afficher_pile(&premier_b, 'b');
+		// ft_ra_rb(&premier_b, 'b');
+		// afficher_pile(&premier_a, 'a');
+		// afficher_pile(&premier_b, 'b');
+		// ft_rra_rrb(&premier_a, 'a');
 		afficher_pile(&premier_a, 'a');
 		afficher_pile(&premier_b, 'b');		
-		ft_pa_pb(&premier_a, &premier_b);
+		// ft_pa_pb(&premier_a, &premier_b, 'a');
+		// afficher_pile(&premier_a, 'a');
+		// afficher_pile(&premier_b, 'b');
+		ft_sa_sb(&premier_b, 'b');
 		afficher_pile(&premier_a, 'a');
 		afficher_pile(&premier_b, 'b');
+		// ft_pa_pb(&premier_b, &premier_a, 'b');
+		// afficher_pile(&premier_a, 'a');
+		// afficher_pile(&premier_b, 'b');
 		return (0);
 	}
 	else
