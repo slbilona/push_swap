@@ -40,7 +40,7 @@ int	ft_chiffres(char **av)
 {
 	int	j;
 	int	i;
-	int o;
+	int	o;
 
 	j = 1;
 	o = 0;
@@ -66,7 +66,6 @@ int	ft_chiffres(char **av)
 			return (0);
 		j++;
 	}
-	
 	return (1);
 }
 

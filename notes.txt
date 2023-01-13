@@ -10,3 +10,8 @@ mouvements :
 
 RRA :
 - modifier l'action s'il n'y a que 2 chaines
+
+idee algo :
+creer un int qui est egale a la valeur moyenne de tout les nombres de la pile a,
+mettre tous les nombres inferieurs a la moyenne dans la pile b,
+les trier dans l'ordre inverse dans la pile b et dans le bon ordre dans la pile a

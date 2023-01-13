@@ -52,30 +52,9 @@ int	ft_push_swap(int ac, char **av)
 		premier_b = NULL;
 		afficher_pile(&premier_a, 'a');
 		afficher_pile(&premier_b, 'b');
-		ft_sa_sb(&premier_a, 'a');
-		// afficher_pile(&premier_a, 'a');
-		// afficher_pile(&premier_b, 'b');
-		// ft_sa_sb(&premier_b, 'b');
-		// afficher_pile(&premier_a, 'a');
-		// afficher_pile(&premier_b, 'b');
-		// ft_ra_rb(&premier_a, 'a');
-		// afficher_pile(&premier_a, 'a');
-		// afficher_pile(&premier_b, 'b');
-		// ft_ra_rb(&premier_b, 'b');
-		// afficher_pile(&premier_a, 'a');
-		// afficher_pile(&premier_b, 'b');
-		// ft_rra_rrb(&premier_a, 'a');
-		afficher_pile(&premier_a, 'a');
-		afficher_pile(&premier_b, 'b');		
-		// ft_pa_pb(&premier_a, &premier_b, 'a');
-		// afficher_pile(&premier_a, 'a');
-		// afficher_pile(&premier_b, 'b');
-		ft_sa_sb(&premier_b, 'b');
+		ft_algo(&premier_a, &premier_b, ac);
 		afficher_pile(&premier_a, 'a');
 		afficher_pile(&premier_b, 'b');
-		// ft_pa_pb(&premier_b, &premier_a, 'b');
-		// afficher_pile(&premier_a, 'a');
-		// afficher_pile(&premier_b, 'b');
 		return (0);
 	}
 	else

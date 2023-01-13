@@ -3,6 +3,7 @@ SRCS = main.c \
 	ft_atoi_long_int.c \
 	listes_chainees.c \
 	mouvements.c \
+	ft_algo.c \
 
 LIBFT = Libft_clone/libft.a
 

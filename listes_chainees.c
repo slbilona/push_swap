@@ -25,14 +25,6 @@ t_list	*ft_pile_a(long int *nombres, int ac)
 	return (list);
 }
 
-/*t_list	*ft_pile_b()
-{
-	t_list list;
-
-	list = ft_lstnew(0);
-	return (list);
-}*/
-
 t_list	*ft_lstnew(int content)
 {
 	t_list	*new;
@@ -59,16 +51,16 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 	}
 }
 
-int ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
-	t_list *actuel;
-	int i;
+	t_list	*actuel;
+	int		i;
 
 	actuel = lst;
 	i = 0;
-	if(!actuel)
+	if (!actuel)
 		return (1);
-	while(actuel)
+	while (actuel)
 	{
 		actuel = actuel->next;
 		i++;
@@ -76,15 +68,15 @@ int ft_lstsize(t_list *lst)
 	return (i);
 }
 
-t_list *ft_lstlast(t_list *lst)
+t_list	*ft_lstlast(t_list *lst)
 {
-	t_list *actuel;
-	t_list *temp;
+	t_list	*actuel;
+	t_list	*temp;
 
 	actuel = lst;
-	if(!lst)
+	if (!lst)
 		return (NULL);
-	while(actuel)
+	while (actuel)
 	{
 		temp = actuel;
 		actuel = actuel->next;
