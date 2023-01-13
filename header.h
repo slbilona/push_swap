@@ -28,6 +28,7 @@ int			ft_lstsize(t_list *lst);
 int			ft_push_swap(int ac, char **av);
 int			ft_ordre(int ac, long int *nombres);
 int			ft_moyenne(t_list **pile_a, int ac);
+int			ft_verif_ordre(t_list **pile, char c);
 int			ft_doublons(long int *nombres, int ac);
 void		ft_ra_rb(t_list **pile, char c);
 void		ft_sa_sb(t_list **pile, char c);
