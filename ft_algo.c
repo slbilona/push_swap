@@ -16,30 +16,42 @@ void ft_algo(t_list **pile_a, /*t_list **pile_b,*/ int ac)
 	premier = *pile_a;
 	deuxieme = premier->next;
 	dernier = ft_lstlast(*pile_a);
+
+	//afficher_pile(pile_a, 'a');
 	if(!ft_verif_ordre(pile_a, 'a'))
 	{
 		if (premier->nombre > deuxieme->nombre)
 		{
-			if(premier->nombre > dernier->nombre)
+			if (premier->nombre > dernier->nombre)
 			{
+				//printf("1\n");
 				ft_ra_rb(pile_a, 'a');
 				ft_algo(pile_a, ac);
 			}
 			else
 			{
+				//printf("2\n");
 				ft_sa_sb(pile_a, 'a');
 				ft_algo(pile_a, ac);
 			}
 		}
 		else
 		{
-			if(premier->nombre > dernier->nombre)
+			if (premier->nombre > dernier->nombre)
 			{
-				ft_rra_rrb(pile_a, 'a');
+				//printf("3\n");
+				ft_ra_rb(pile_a, 'a');
 				ft_algo(pile_a, ac);
 			}
 			else
 			{
+				if(deuxieme->nombre > dernier->nombre)
+				{
+					ft_sa_sb(pile_a, 'a');
+					ft_algo(pile_a, ac);					
+				}
+				else
+				//printf("4\n");
 				ft_algo_2(pile_a);
 				ft_algo(pile_a, ac);
 			}
@@ -56,15 +68,18 @@ void ft_algo_2(t_list **pile_a/*, t_list **pile_b,*/)
 	premier = *pile_a;
 	deuxieme = premier->next;
 	dernier = ft_lstlast(*pile_a);
+	afficher_pile(pile_a, 'a');
 	if(!ft_verif_ordre(pile_a, 'a'))
 	{
 		if (deuxieme->nombre > dernier->nombre)
 		{
+			printf("5\n");
 			ft_sa_sb(pile_a, 'a');
-			ft_ra_rb(pile_a, 'a');
+			//ft_ra_rb(pile_a, 'a');
 		}
 		else
 		{
+			//printf("6\n");
 			ft_ra_rb(pile_a, 'a');
 			ft_algo_2(pile_a);
 		}
