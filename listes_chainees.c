@@ -51,21 +51,22 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 	}
 }
 
-int	ft_lstsize(t_list *lst)
+int ft_lstsize(t_list *lst)
 {
-	t_list	*actuel;
-	int		i;
+    t_list *actuel;
+    int i;
 
-	actuel = lst;
-	i = 0;
-	if (!actuel)
-		return (1);
-	while (actuel)
-	{
-		actuel = actuel->next;
-		i++;
-	}
-	return (i);
+    actuel = lst;
+    if(actuel)
+        i = 1;
+    else
+        return 0;
+    while(actuel->next)
+    {
+        actuel = actuel->next;
+        i++;
+    }
+    return (i);
 }
 
 t_list	*ft_lstlast(t_list *lst)

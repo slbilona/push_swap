@@ -52,7 +52,7 @@ int	ft_push_swap(int ac, char **av)
 		premier_b = NULL;
 		afficher_pile(&premier_a, 'a');
 		afficher_pile(&premier_b, 'b');
-		ft_algo(&premier_a, &premier_b, ac);
+		ft_algo(&premier_a, ac);
 		afficher_pile(&premier_a, 'a');
 		afficher_pile(&premier_b, 'b');
 		return (0);
