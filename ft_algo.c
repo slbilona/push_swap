@@ -59,8 +59,15 @@ void ft_algo_2(t_list **pile_a/*, t_list **pile_b,*/)
 	if(!ft_verif_ordre(pile_a, 'a'))
 	{
 		if (deuxieme->nombre > dernier->nombre)
+		{
 			ft_sa_sb(pile_a, 'a');
-		ft_ra_rb(pile_a, 'a');
+			ft_ra_rb(pile_a, 'a');
+		}
+		else
+		{
+			ft_ra_rb(pile_a, 'a');
+			ft_algo_2(pile_a);
+		}
 	}
 }
 
