@@ -49,9 +49,10 @@ int	ft_push_swap(int ac, char **av)
 		ft_tri_int(nombres, ac);
 		ft_place(nombres, &premier_a, ac);
 		ft_tri_pile_a(&premier_a, &premier_b, ac);
+		ft_algo(&premier_a);
+		//ft_algo(&premier_b);
 		afficher_pile(&premier_a, 'a');
 		afficher_pile(&premier_b, 'b');
-		//ft_algo(&premier_a, ac);
 		free(nombres);
 	}
 	else
@@ -59,6 +60,7 @@ int	ft_push_swap(int ac, char **av)
 		free(nombres);
 		return (0);
 	}
+	ft_vide_liste(&premier_a);
 	return (0);
 }
 
