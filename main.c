@@ -61,6 +61,10 @@ int	ft_push_swap(int ac, char **av)
 		return (0);
 	}
 	ft_vide_liste(&premier_a);
+	if(premier_b)
+	{
+		ft_vide_liste(&premier_b);
+	}
 	return (0);
 }
 
