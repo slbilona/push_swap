@@ -4,6 +4,7 @@ SRCS = main.c \
 	listes_chainees.c \
 	mouvements.c \
 	ft_algo.c \
+	ft_index.c \
 
 LIBFT = Libft_clone/libft.a
 

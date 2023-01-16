@@ -20,7 +20,7 @@ t_list	*ft_pile_a(long int *nombres, int ac)
 	// 	printf("%d, ", test->nombre);
 	// 	test = test->next;
 	// }
-	free(nombres);
+	//free(nombres);
 	//printf("NULL\n");
 	return (list);
 }
@@ -83,4 +83,19 @@ t_list	*ft_lstlast(t_list *lst)
 		actuel = actuel->next;
 	}
 	return (temp);
+}
+
+void ft_vide_liste(t_list **pile)
+{
+	t_list *actuel;
+	t_list *temp;
+
+	actuel = *pile;
+	while(actuel)
+	{
+		temp = actuel;
+		actuel = actuel->next;
+		free(temp);
+	}
+	free(pile);
 }

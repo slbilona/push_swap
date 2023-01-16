@@ -17,10 +17,10 @@ void afficher_pile(t_list **pile, char c)
 	t_list *test;
 
 	test = *pile;
-	printf("pile %c :", c);
+	printf("pile %c :\n", c);
 	while (test)
 	{
-		printf("%d, ", test->nombre);
+		printf("place : %d, valeur : %d\n",test->place, test->nombre);
 		test = test->next;
 	}
 	printf("\n");
@@ -32,11 +32,7 @@ int	ft_push_swap(int ac, char **av)
 	t_list *premier_a;
 	t_list *premier_b;
 	t_list *pile_a;
-	// t_list *pile_b;
 
-	// pile_b = malloc(sizeof(*pile_b));
-	// pile_b->nombre = 10;
-	// pile_b->next = NULL;
 	if (ac <= 1)
 		return (1);
 	nombres = ft_verif(ac, av);
@@ -49,13 +45,14 @@ int	ft_push_swap(int ac, char **av)
 	{
 		pile_a = ft_pile_a(nombres, ac);
 		premier_a = pile_a;
-		premier_b = NULL;
+		premier_b = NULL;		
+		ft_tri_int(nombres, ac);
+		ft_place(nombres, &premier_a, ac);
+		ft_tri_pile_a(&premier_a, &premier_b, ac);
 		afficher_pile(&premier_a, 'a');
 		afficher_pile(&premier_b, 'b');
-		ft_algo(&premier_a, ac);
-		afficher_pile(&premier_a, 'a');
-		afficher_pile(&premier_b, 'b');
-		return (0);
+		//ft_algo(&premier_a, ac);
+		free(nombres);
 	}
 	else
 	{
