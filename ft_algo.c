@@ -8,15 +8,17 @@ void ft_tri_pile_a(t_list **pile_a, t_list **pile_b, int ac)
 	t_list *premier_a;
 
 	i = 0;
-	printf("\nmilieu : %d\n", ((ac-3)/2));
+	//printf("\nmilieu : %d\n", ((ac-3)/2));
 	while(i < (ac - 1))
 	{
 		premier_a = *pile_a;
-		if(premier_a->place == (ac - 2) || premier_a->place == (ac - 3) || premier_a->place == (ac - 4))
-		{
+		// if(premier_a->place == (ac - 2) || premier_a->place == (ac - 3) || premier_a->place == (ac - 4))
+		// {
+		// 	ft_ra_rb(pile_a, 'a');
+		// }
+		if(premier_a->place > ((ac-1)/2))
 			ft_ra_rb(pile_a, 'a');
-		}
-		else if(premier_a->place <= ((ac-3)/2))
+		else if(premier_a->place <= ((ac-1)/2))
 		{
 			ft_pa_pb(pile_a, pile_b, 'b');
 		}
@@ -54,7 +56,7 @@ void ft_algo(t_list **pile_a/*, t_list **pile_b, int ac*/)
 			}
 			else
 			{
-				printf("2\n");
+				//printf("2\n");
 				ft_sa_sb(pile_a, 'a');
 				ft_algo(pile_a);
 			}
