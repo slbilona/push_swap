@@ -48,13 +48,18 @@ int	ft_push_swap(int ac, char **av)
 		premier_b = NULL;		
 		ft_tri_int(nombres, ac);
 		ft_place(nombres, &premier_a, ac);
-		ft_tri_pile_a(&premier_a, &premier_b, ac);
-		ft_algo(&premier_a);
-		if(premier_b)
-			ft_algo_b(&premier_b);
-		if(ft_verif_ordre(&premier_a, 'a') && ft_verif_ordre(&premier_b, 'b'))
+		if(ac > 6)
 		{
-			ft_b_dans_a(&premier_a, &premier_b);
+			ft_tri_pile_a(&premier_a, &premier_b, ac);
+		}
+		ft_algo(&premier_a);
+		if(premier_b != NULL)
+		{
+			ft_algo_b(&premier_b);
+			if(ft_verif_ordre(&premier_a, 'a') && ft_verif_ordre(&premier_b, 'b'))
+			{
+				ft_b_dans_a(&premier_a, &premier_b);
+			}
 		}
 		afficher_pile(&premier_a, 'a');
 		afficher_pile(&premier_b, 'b');
