@@ -19,11 +19,11 @@ void	ft_tri_int(long int *nombres, int ac)
 		else
 			i++;
 	}
-	i = 0;
-	int j = 1;
-	while (j++ < ac)
-		printf("%ld, ", nombres[i++]);
-	printf("\n");
+	// i = 0;
+	// int j = 1;
+	// while (j++ < ac)
+	// 	printf("%ld, ", nombres[i++]);
+	// printf("\n");
 }
 
 void	ft_place(long int *nombres, t_list **pile_a, int ac)

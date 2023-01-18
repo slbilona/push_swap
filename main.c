@@ -12,9 +12,9 @@
 
 #include "header.h"
 
-void afficher_pile(t_list **pile, char c)
+void	afficher_pile(t_list **pile, char c)
 {
-	t_list *test;
+	t_list	*test;
 
 	test = *pile;
 	printf("pile %c :\n", c);
@@ -29,9 +29,9 @@ void afficher_pile(t_list **pile, char c)
 int	ft_push_swap(int ac, char **av)
 {
 	long int	*nombres;
-	t_list *premier_a;
-	t_list *premier_b;
-	t_list *pile_a;
+	t_list		*premier_a;
+	t_list		*premier_b;
+	t_list		*pile_a;
 
 	if (ac <= 1)
 		return (1);
@@ -45,24 +45,25 @@ int	ft_push_swap(int ac, char **av)
 	{
 		pile_a = ft_pile_a(nombres, ac);
 		premier_a = pile_a;
-		premier_b = NULL;		
+		premier_b = NULL;
 		ft_tri_int(nombres, ac);
 		ft_place(nombres, &premier_a, ac);
-		if(ac > 6)
+		if (ac > 6)
 		{
 			ft_tri_pile_a(&premier_a, &premier_b, ac);
 		}
 		ft_algo(&premier_a);
-		if(premier_b != NULL)
+		if (premier_b != NULL)
 		{
 			ft_algo_b(&premier_b);
-			if(ft_verif_ordre(&premier_a, 'a') && ft_verif_ordre(&premier_b, 'b'))
+			if (ft_verif_ordre(&premier_a, 'a')
+				&& ft_verif_ordre(&premier_b, 'b'))
 			{
 				ft_b_dans_a(&premier_a, &premier_b);
 			}
 		}
-		afficher_pile(&premier_a, 'a');
-		afficher_pile(&premier_b, 'b');
+		//afficher_pile(&premier_a, 'a');
+		//afficher_pile(&premier_b, 'b');
 		free(nombres);
 	}
 	else
@@ -71,7 +72,7 @@ int	ft_push_swap(int ac, char **av)
 		return (0);
 	}
 	ft_vide_liste(&premier_a);
-	if(premier_b)
+	if (premier_b)
 	{
 		ft_vide_liste(&premier_b);
 	}
@@ -83,4 +84,3 @@ int	main(int ac, char **av)
 	ft_push_swap(ac, av);
 	return (0);
 }
-
