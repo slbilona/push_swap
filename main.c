@@ -20,7 +20,7 @@ void	afficher_pile(t_list **pile, char c)
 	printf("pile %c :\n", c);
 	while (test)
 	{
-		printf("place : %d, valeur : %d\n",test->place, test->nombre);
+		printf("place : %d, valeur : %d\n", test->place, test->nombre);
 		test = test->next;
 	}
 	printf("\n");

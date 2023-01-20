@@ -100,24 +100,24 @@ long int	*ft_int_nombres(int ac, char **av)
 
 int	ft_doublons(long int *nombres, int ac)
 {
-	int	j;
-	int	fac;
+	int i;
+	int j;
 
+	i = 0;
 	j = 0;
-	fac = ac - 2;
-	while (j < (ac - 1))
+	while(i < ac - 1)
 	{
-		while (fac > 0)
+		j = i + 1;
+		while(j < ac - 1)
 		{
-			//printf("|nombres[j] %d|\n|nombres[i + j] %d|\n", nombres[j], nombres[(fac) + j]);
-			if (nombres[j] == nombres[(fac) + j])
+			if(nombres[i] == nombres[j])
 			{
 				free(nombres);
 				return (0);
 			}
-			fac--;
+			j++;
 		}
-		j++;
+		i++;
 	}
 	return (1);
 }
