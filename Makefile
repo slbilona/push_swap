@@ -6,6 +6,7 @@ SRCS = main.c \
 	ft_algo.c \
 	ft_algo_b.c \
 	ft_index.c \
+	dix_ou_plus.c \
 
 LIBFT = Libft_clone/libft.a
 

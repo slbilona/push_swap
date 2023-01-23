@@ -20,7 +20,7 @@ void	afficher_pile(t_list **pile, char c)
 	printf("pile %c :\n", c);
 	while (test)
 	{
-		printf("place : %d, valeur : %d\n", test->place, test->nombre);
+		printf("position : %d, place : %d, valeur : %d\n", test->position, test->place, test->nombre);
 		test = test->next;
 	}
 	printf("\n");
@@ -48,22 +48,24 @@ int	ft_push_swap(int ac, char **av)
 		premier_b = NULL;
 		ft_tri_int(nombres, ac);
 		ft_place(nombres, &premier_a, ac);
-		if (ac > 6)
+		if (ac <= 11)
 		{
 			ft_tri_pile_a(&premier_a, &premier_b, ac);
-		}
-		ft_algo(&premier_a);
-		if (premier_b != NULL)
-		{
-			ft_algo_b(&premier_b);
-			if (ft_verif_ordre(&premier_a, 'a')
-				&& ft_verif_ordre(&premier_b, 'b'))
+			ft_algo(&premier_a);
+			if (premier_b != NULL)
 			{
-				ft_b_dans_a(&premier_a, &premier_b);
+				ft_algo_b(&premier_b);
+				if (ft_verif_ordre(&premier_a, 'a')
+					&& ft_verif_ordre(&premier_b, 'b'))
+				{
+					ft_b_dans_a(&premier_a, &premier_b);
+				}
 			}
 		}
-		//afficher_pile(&premier_a, 'a');
-		//afficher_pile(&premier_b, 'b');
+		else
+			ft_principale(&premier_a, &premier_b, ac);
+		afficher_pile(&premier_a, 'a');
+		afficher_pile(&premier_b, 'b');
 		free(nombres);
 	}
 	else
