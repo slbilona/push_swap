@@ -64,8 +64,8 @@ int	ft_push_swap(int ac, char **av)
 		}
 		else
 			ft_principale(&premier_a, &premier_b, ac);
-		afficher_pile(&premier_a, 'a');
-		afficher_pile(&premier_b, 'b');
+		// afficher_pile(&premier_a, 'a');
+		// afficher_pile(&premier_b, 'b');
 		free(nombres);
 	}
 	else

@@ -66,10 +66,10 @@ void	ft_rra_rrb(t_list **pile, char c)
 			av_dernier->next = NULL;
 			dernier->next = chaine1;
 			*pile = dernier;
+			printf("rr%c\n", c);
 		}
 		else if (ft_lstsize(*pile) == 2)
 			ft_sa_sb(pile, c);
-		printf("rr%c\n", c);
 	}
 }
 
@@ -90,4 +90,33 @@ t_list	*ft_almostlast(t_list *lst)
 		actuel = actuel->next;
 	}
 	return (pretemp);
+}
+
+void ft_rrr(t_list **pile_a, t_list **pile_b)
+{
+	t_list	*chaine1;
+	t_list	*av_dernier;
+	t_list	*dernier;
+
+	if (*pile_a && *pile_b)
+	{
+		dernier = ft_lstlast(*pile_a);
+		chaine1 = *pile_a;
+		av_dernier = ft_almostlast(*pile);
+		av_dernier->next = NULL;
+		dernier->next = chaine1;
+		*pile_a = dernier;
+		if (ft_lstsize(*pile) >= 3)
+		{
+			dernier = ft_lstlast(*pile);
+			chaine1 = *pile;
+			av_dernier = ft_almostlast(*pile);
+			av_dernier->next = NULL;
+			dernier->next = chaine1;
+			*pile = dernier;
+		}
+		else if (ft_lstsize(*pile) == 2)
+			ft_sa_sb(pile, 'b');
+			printf("rrr\n");
+	}
 }

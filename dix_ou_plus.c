@@ -4,8 +4,8 @@ void	afficher_pile(t_list **pile, char c);
 
 void	ft_principale(t_list **pile_a, t_list **pile_b, int ac)
 {
-	afficher_pile(pile_a, 'a');
-	afficher_pile(pile_b, 'b');
+	// afficher_pile(pile_a, 'a');
+	// afficher_pile(pile_b, 'b');
 	ft_que_3(pile_a, pile_b, ac);
 	ft_algo(pile_a);
 	ft_position(pile_a);
@@ -14,185 +14,52 @@ void	ft_principale(t_list **pile_a, t_list **pile_b, int ac)
 
 void ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int ac)
 {
-	printf("taille pile a : %d\n", ft_lstsize(*pile_a));
-	printf("calcul 1 : %d\n", ft_calcul(pile_a, *pile_b, ac));
-	printf("calcul 2 : %d\n", (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1));
-	if (ft_calcul(pile_a, *pile_b, ac) == (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
+	t_list *premier;
+	
+	premier = *pile_a;
+	if(ft_lstsize(*pile_a) != (ac-1))
 	{
-		printf("1\n");
-		ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
+		// printf("taille pile a : %d\n", ft_lstsize(*pile_a));
+		// printf("calcul 1 : %d\n", ft_calcul(pile_a, *pile_b, ac));
+		// printf("calcul 2 : %d\n", (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1));
+		if (ft_calcul(pile_a, *pile_b, ac) == (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
+		{
+			//printf("1\n");
+			if ((ft_lstsize(*pile_a)/2) <= ft_duo(pile_a, *pile_b, ac))
+				ft_trier_bas(pile_a, pile_b, (ft_calcul(pile_a, *pile_b, ac) - 1));
+			else
+				ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
+		}
+		else if (ft_calcul(pile_a, *pile_b, ac) > (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
+		{
+			//printf("2\n");
+			if ((ft_lstsize(*pile_a)/2) <= ft_duo(pile_a, ft_lstlast(*pile_b), ac))
+			{
+				ft_rra_rrb(pile_b, 'b');
+				ft_trier_bas(pile_a, pile_b, (ft_calcul(pile_a, *pile_b, ac) - 1));
+			}
+			else
+			{
+				ft_rra_rrb(pile_b, 'b');
+				ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
+			}
+		}
+		else if (ft_calcul(pile_a, *pile_b, ac) < (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
+		{
+			//printf("3\n");
+			if ((ft_lstsize(*pile_a)/2) <= ft_duo(pile_a, *pile_b, ac))
+				ft_trier_bas(pile_a, pile_b, (ft_calcul(pile_a, *pile_b, ac) - 1));
+			else
+				ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
+		}
+		ft_position(pile_a);
+		ft_je_sais_pas_ptn(pile_a, pile_b, ac);
 	}
-	else if (ft_calcul(pile_a, *pile_b, ac) > (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
+	else if (premier->place != 0)
 	{
-		printf("2\n");
-		ft_trier_bas(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
+		ft_rra_rrb(pile_a, 'a');
+		ft_je_sais_pas_ptn(pile_a, pile_b, ac);
 	}
-	else if (ft_calcul(pile_a, *pile_b, ac) < (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-	{
-		printf("3\n");
-		ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-	}
-	ft_position(pile_a);
-
-	printf("taille pile a : %d\n", ft_lstsize(*pile_a));
-	printf("calcul 1 : %d\n", ft_calcul(pile_a, *pile_b, ac));
-	printf("calcul 2 : %d\n", (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1));
-	if (ft_calcul(pile_a, *pile_b, ac) == (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-	{
-		printf("1\n");
-		ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-	}
-	else if (ft_calcul(pile_a, *pile_b, ac) > (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-	{
-		printf("2\n");
-		ft_trier_bas(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-	}
-	else if (ft_calcul(pile_a, *pile_b, ac) < (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-	{
-		printf("3\n");
-		ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-	}
-	ft_position(pile_a);
-
-	printf("taille pile a : %d\n", ft_lstsize(*pile_a));
-	printf("calcul 1 : %d\n", ft_calcul(pile_a, *pile_b, ac));
-	printf("calcul 2 : %d\n", (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1));
-	if (ft_calcul(pile_a, *pile_b, ac) == (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-	{
-		printf("1\n");
-		ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-	}
-	else if (ft_calcul(pile_a, *pile_b, ac) > (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-	{
-		printf("2\n");
-		ft_trier_bas(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-	}
-	else if (ft_calcul(pile_a, *pile_b, ac) < (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-	{
-		printf("3\n");
-		ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-	}
-	ft_position(pile_a);
-
-	printf("taille pile a : %d\n", ft_lstsize(*pile_a));
-	printf("calcul 1 : %d\n", ft_calcul(pile_a, *pile_b, ac));
-	printf("calcul 2 : %d\n", (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1));
-	if (ft_calcul(pile_a, *pile_b, ac) == (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-	{
-		printf("1\n");
-		ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-	}
-	else if (ft_calcul(pile_a, *pile_b, ac) > (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-	{
-		printf("2\n");
-		ft_trier_bas(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-	}
-	else if (ft_calcul(pile_a, *pile_b, ac) < (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-	{
-		printf("3\n");
-		ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-	}
-	ft_position(pile_a);
-
-	printf("taille pile a : %d\n", ft_lstsize(*pile_a));
-	printf("calcul 1 : %d\n", ft_calcul(pile_a, *pile_b, ac));
-	printf("calcul 2 : %d\n", (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1));
-	if (ft_calcul(pile_a, *pile_b, ac) == (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-	{
-		printf("1\n");
-		ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-	}
-	else if (ft_calcul(pile_a, *pile_b, ac) > (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-	{
-		printf("2\n");
-		ft_trier_bas(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-	}
-	else if (ft_calcul(pile_a, *pile_b, ac) < (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-	{
-		printf("3\n");
-		ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-	}
-	ft_position(pile_a);
-
-	printf("taille pile a : %d\n", ft_lstsize(*pile_a));
-	printf("calcul 1 : %d\n", ft_calcul(pile_a, *pile_b, ac));
-	printf("calcul 2 : %d\n", (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1));
-	if (ft_calcul(pile_a, *pile_b, ac) == (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-	{
-		printf("1\n");
-		ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-	}
-	else if (ft_calcul(pile_a, *pile_b, ac) > (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-	{
-		printf("2\n");
-		ft_trier_bas(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-	}
-	else if (ft_calcul(pile_a, *pile_b, ac) < (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-	{
-		printf("3\n");
-		ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-	}
-	ft_position(pile_a);
-
-	printf("taille pile a : %d\n", ft_lstsize(*pile_a));
-	printf("calcul 1 : %d\n", ft_calcul(pile_a, *pile_b, ac));
-	printf("calcul 2 : %d\n", (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1));
-	if (ft_calcul(pile_a, *pile_b, ac) == (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-	{
-		printf("1\n");
-		ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-	}
-	else if (ft_calcul(pile_a, *pile_b, ac) > (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-	{
-		printf("2\n");
-		ft_trier_bas(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-	}
-	else if (ft_calcul(pile_a, *pile_b, ac) < (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-	{
-		printf("3\n");
-		ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-	}
-	ft_position(pile_a);
-
-	printf("taille pile a : %d\n", ft_lstsize(*pile_a));
-	printf("calcul 1 : %d\n", ft_calcul(pile_a, *pile_b, ac));
-	printf("calcul 2 : %d\n", (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1));
-	if (ft_calcul(pile_a, *pile_b, ac) == (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-	{
-		printf("1\n");
-		ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-	}
-	else if (ft_calcul(pile_a, *pile_b, ac) > (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-	{
-		printf("2\n");
-		ft_trier_bas(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-	}
-	else if (ft_calcul(pile_a, *pile_b, ac) < (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-	{
-		printf("3\n");
-		ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-	}
-	ft_position(pile_a);
-
-	printf("taille pile a : %d\n", ft_lstsize(*pile_a));
-	printf("calcul 1 : %d\n", ft_calcul(pile_a, *pile_b, ac));
-	printf("calcul 2 : %d\n", (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1));
-	if (ft_calcul(pile_a, *pile_b, ac) == (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-	{
-		printf("1\n");
-		ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-	}
-	else if (ft_calcul(pile_a, *pile_b, ac) > (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-	{
-		printf("2\n");
-		ft_trier_bas(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-	}
-	else if (ft_calcul(pile_a, *pile_b, ac) < (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-	{
-		printf("3\n");
-		ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-	}
-	ft_position(pile_a);
 }
 
 void	ft_trier_haut(t_list **pile_a, t_list **pile_b, int mouv)
@@ -213,7 +80,6 @@ void	ft_trier_bas(t_list **pile_a, t_list **pile_b, int mouv)
 	int	i;
 
 	i = 0;
-	ft_rra_rrb(pile_b, 'b');
 	while (i < mouv)
 	{
 		ft_rra_rrb(pile_a, 'a');
