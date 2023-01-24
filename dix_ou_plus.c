@@ -35,8 +35,8 @@ void ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int ac)
 			//printf("2\n");
 			if ((ft_lstsize(*pile_a)/2) <= ft_duo(pile_a, ft_lstlast(*pile_b), ac))
 			{
-				ft_rra_rrb(pile_b, 'b');
-				ft_trier_bas(pile_a, pile_b, (ft_calcul(pile_a, *pile_b, ac) - 1));
+				ft_rrr(pile_a, pile_b);
+				ft_trier_bas(pile_a, pile_b, (ft_calcul(pile_a, *pile_b, ac) - 2));
 			}
 			else
 			{

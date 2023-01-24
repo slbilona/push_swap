@@ -36,6 +36,7 @@ long int	*ft_verif(int ac, char **av);
 void		ft_ra_rb(t_list **pile, char c);
 void		ft_sa_sb(t_list **pile, char c);
 void		ft_rra_rrb(t_list **pile, char c);
+void		ft_rrr(t_list **pile_a, t_list **pile_b);
 void		ft_pa_pb(t_list **pile1, t_list **pile2, char c);
 
 //10 ou moins

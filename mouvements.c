@@ -102,21 +102,21 @@ void ft_rrr(t_list **pile_a, t_list **pile_b)
 	{
 		dernier = ft_lstlast(*pile_a);
 		chaine1 = *pile_a;
-		av_dernier = ft_almostlast(*pile);
+		av_dernier = ft_almostlast(*pile_a);
 		av_dernier->next = NULL;
 		dernier->next = chaine1;
 		*pile_a = dernier;
-		if (ft_lstsize(*pile) >= 3)
+		if (ft_lstsize(*pile_b) >= 3)
 		{
-			dernier = ft_lstlast(*pile);
-			chaine1 = *pile;
-			av_dernier = ft_almostlast(*pile);
+			dernier = ft_lstlast(*pile_b);
+			chaine1 = *pile_b;
+			av_dernier = ft_almostlast(*pile_b);
 			av_dernier->next = NULL;
 			dernier->next = chaine1;
-			*pile = dernier;
+			*pile_b = dernier;
 		}
-		else if (ft_lstsize(*pile) == 2)
-			ft_sa_sb(pile, 'b');
-			printf("rrr\n");
+		else if (ft_lstsize(*pile_b) == 2)
+			ft_sa_sb(pile_b, 'b');
+		printf("rrr\n");
 	}
 }
