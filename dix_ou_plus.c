@@ -1,6 +1,7 @@
 #include "header.h"
 
 void	afficher_pile(t_list **pile, char c);
+int ft_duo_deuxieme(t_list **pile_a, t_list *element);
 
 void	ft_principale(t_list **pile_a, t_list **pile_b, int ac)
 {
@@ -48,37 +49,44 @@ int ft_compare_calculs(t_list **pile_a, t_list **pile_b, int ac)
 	// }
 	return (0);
 }
-
+/*
 void ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int ac)
 {
 	t_list *premier;
 	t_list *deuxieme_b;
 	int un;
-	int deux;
+	//int deux;
 	int trois;
 	
 	premier = *pile_a;
+	deuxieme_b = *pile_b;
+	deuxieme_b = deuxieme_b->next;
 	if(ft_lstsize(*pile_a) != (ac-1))
 	{
-		deuxieme_b = *pile_b;
-		deuxieme_b = deuxieme_b->next;
 		un = ft_calcul(pile_a, *pile_b, ac);
-		deux = ft_calcul(pile_a, deuxieme_b, ac) + 1;
+		//deux = ft_calcul(pile_a, deuxieme_b, ac) + 1;
 		trois = ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1;
+		ft_position(pile_a);
+		rintf("deuxieme b : %d, premier a : %d\n", deuxieme_b->place, )
 		// printf("taille pile a : %d\n", ft_lstsize(*pile_a));
 		// printf("calcul 1 : %d\n", ft_calcul(pile_a, *pile_b, ac));
 		// printf("calcul 2 : %d\n", (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1));
-		if (un <= trois && un <= deux)
+		if (ft_duo_deuxieme(pile_a, deuxieme_b) == 1)
 		{
-			printf("1\n");
+			ft_sa_sb(pile_b, 'b');
+			ft_je_sais_pas_ptn(pile_a, pile_b, ac);
+		}
+		if (un <= trois)
+		{
+			//printf("1\n");
 			if ((ft_lstsize(*pile_a)/2) <= ft_duo(pile_a, *pile_b, ac))
 				ft_trier_bas(pile_a, pile_b, (ft_calcul(pile_a, *pile_b, ac) - 1));
 			else
 				ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
 		}
-		else if (trois <= un && trois <= deux)
+		else if (trois <= un)
 		{
-			printf("3\n");
+			//printf("3\n");
 			if ((ft_lstsize(*pile_a)/2) <= ft_duo(pile_a, ft_lstlast(*pile_b), ac))
 			{
 				ft_rrr(pile_a, pile_b);
@@ -90,19 +98,59 @@ void ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int ac)
 				ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
 			}
 		}
-		else
+		// else if (deux <= un && deux <= trois)
+		// {
+		// 	printf("2\n");
+		// 	ft_sa_sb(pile_b, 'b');
+		// }
+		ft_je_sais_pas_ptn(pile_a, pile_b, ac);
+	}
+	else if (premier->place != 0)
+	{
+		ft_rra_rrb(pile_a, 'a');
+		ft_je_sais_pas_ptn(pile_a, pile_b, ac);
+	}
+}*/
+
+void ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int ac)
+{
+	t_list *premier;
+	
+	premier = *pile_a;
+	if(ft_lstsize(*pile_a) != (ac-1))
+	{
+		// printf("taille pile a : %d\n", ft_lstsize(*pile_a));
+		// printf("calcul 1 : %d\n", ft_calcul(pile_a, *pile_b, ac));
+		// printf("calcul 2 : %d\n", (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1));
+		if (ft_calcul(pile_a, *pile_b, ac) == (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
 		{
-			printf("2\n");
-			if ((ft_lstsize(*pile_a)/2) <= ft_duo(pile_a, deuxieme_b, ac))
+			//printf("1\n");
+			if ((ft_lstsize(*pile_a)/2) <= ft_duo(pile_a, *pile_b, ac))
+				ft_trier_bas(pile_a, pile_b, (ft_calcul(pile_a, *pile_b, ac) - 1));
+			else
+				ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
+		}
+		else if (ft_calcul(pile_a, *pile_b, ac) > (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
+		{
+			//printf("2\n");
+			if ((ft_lstsize(*pile_a)/2) <= ft_duo(pile_a, ft_lstlast(*pile_b), ac))
 			{
-				ft_sa_sb(pile_b, 'b');
+				ft_rrr(pile_a, pile_b);
 				ft_trier_bas(pile_a, pile_b, (ft_calcul(pile_a, *pile_b, ac) - 2));
 			}
 			else
 			{
-				ft_sa_sb(pile_b, 'b');
+				ft_rra_rrb(pile_b, 'b');
 				ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
 			}
+		}
+		else if (ft_calcul(pile_a, *pile_b, ac) < (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
+		{
+			//printf("3\n");
+			if ((ft_lstsize(*pile_a)/2) <= ft_duo(pile_a, *pile_b, ac))
+				ft_trier_bas(pile_a, pile_b, (ft_calcul(pile_a, *pile_b, ac) - 1));
+			else
+				ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
 		}
 		ft_position(pile_a);
 		ft_je_sais_pas_ptn(pile_a, pile_b, ac);
@@ -113,56 +161,6 @@ void ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int ac)
 		ft_je_sais_pas_ptn(pile_a, pile_b, ac);
 	}
 }
-
-// void ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int ac)
-// {
-// 	t_list *premier;
-	
-// 	premier = *pile_a;
-// 	if(ft_lstsize(*pile_a) != (ac-1))
-// 	{
-// 		// printf("taille pile a : %d\n", ft_lstsize(*pile_a));
-// 		// printf("calcul 1 : %d\n", ft_calcul(pile_a, *pile_b, ac));
-// 		// printf("calcul 2 : %d\n", (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1));
-// 		if (ft_calcul(pile_a, *pile_b, ac) == (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-// 		{
-// 			//printf("1\n");
-// 			if ((ft_lstsize(*pile_a)/2) <= ft_duo(pile_a, *pile_b, ac))
-// 				ft_trier_bas(pile_a, pile_b, (ft_calcul(pile_a, *pile_b, ac) - 1));
-// 			else
-// 				ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-// 		}
-// 		else if (ft_calcul(pile_a, *pile_b, ac) > (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-// 		{
-// 			//printf("2\n");
-// 			if ((ft_lstsize(*pile_a)/2) <= ft_duo(pile_a, ft_lstlast(*pile_b), ac))
-// 			{
-// 				ft_rrr(pile_a, pile_b);
-// 				ft_trier_bas(pile_a, pile_b, (ft_calcul(pile_a, *pile_b, ac) - 2));
-// 			}
-// 			else
-// 			{
-// 				ft_rra_rrb(pile_b, 'b');
-// 				ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-// 			}
-// 		}
-// 		else if (ft_calcul(pile_a, *pile_b, ac) < (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-// 		{
-// 			//printf("3\n");
-// 			if ((ft_lstsize(*pile_a)/2) <= ft_duo(pile_a, *pile_b, ac))
-// 				ft_trier_bas(pile_a, pile_b, (ft_calcul(pile_a, *pile_b, ac) - 1));
-// 			else
-// 				ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-// 		}
-// 		ft_position(pile_a);
-// 		ft_je_sais_pas_ptn(pile_a, pile_b, ac);
-// 	}
-// 	else if (premier->place != 0)
-// 	{
-// 		ft_rra_rrb(pile_a, 'a');
-// 		ft_je_sais_pas_ptn(pile_a, pile_b, ac);
-// 	}
-// }
 
 void	ft_trier_haut(t_list **pile_a, t_list **pile_b, int mouv)
 {
@@ -257,5 +255,15 @@ int	ft_duo(t_list **pile_a, t_list *element, int ac)
 		}
 		i++;
 	}
+	return (0);
+}
+
+int ft_duo_deuxieme(t_list **pile_a, t_list *element)
+{
+	t_list *premier_a;
+
+	premier_a = *pile_a;
+	if((element->place + 1) == premier_a->place)
+		return (1);
 	return (0);
 }
