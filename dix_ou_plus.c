@@ -11,48 +11,7 @@ void	ft_principale(t_list **pile_a, t_list **pile_b, int ac)
 	ft_algo(pile_a);
 	ft_je_sais_pas_ptn(pile_a, pile_b, ac);
 }
-/*
-void ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int ac)
-{
-	t_list *premier;
-	
-	premier = *pile_a;
-	if(ft_lstsize(*pile_a) != (ac-1))
-	{
-		// printf("taille pile a : %d\n", ft_lstsize(*pile_a));
-		// printf("calcul 1 : %d\n", ft_calcul(pile_a, *pile_b, ac));
-		// printf("calcul 2 : %d\n", (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1));
-		if (ft_calcul(pile_a, *pile_b, ac) <= (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-		{
-			//printf("1\n");
-			if ((ft_lstsize(*pile_a)/2) <= ft_duo(pile_a, *pile_b, ac))
-				ft_trier_bas(pile_a, pile_b, (ft_calcul(pile_a, *pile_b, ac) - 1));
-			else
-				ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-		}
-		else if (ft_calcul(pile_a, *pile_b, ac) > (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1))
-		{
-			//printf("2\n");
-			if ((ft_lstsize(*pile_a)/2) <= ft_duo(pile_a, ft_lstlast(*pile_b), ac))
-			{
-				ft_rrr(pile_a, pile_b);
-				ft_trier_bas(pile_a, pile_b, (ft_calcul(pile_a, *pile_b, ac) - 2));
-			}
-			else
-			{
-				ft_rra_rrb(pile_b, 'b');
-				ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-			}
-		}
-		ft_position(pile_a);
-		ft_je_sais_pas_ptn(pile_a, pile_b, ac);
-	}
-	else if (premier->place != 0)
-	{
-		ft_rra_rrb(pile_a, 'a');
-		ft_je_sais_pas_ptn(pile_a, pile_b, ac);
-	}
-}*/
+
 void ft_clement(t_list **pile_a, t_list **pile_b)
 {
 	t_list *premier_b;
@@ -89,23 +48,19 @@ void ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int ac)
 	int trois;
 	int av_trois;
 
-	un = 0;
-	deux = 0;
-	av_trois = 0;
-	trois = 0;
+	un = 1000;
+	deux = 1000;
+	av_trois = 1000;
+	trois = 1000;
 	ft_position(pile_a);
 	ft_position(pile_b);
 	deuxieme_b = *pile_b;
 	deuxieme_b = deuxieme_b->next;
 	// afficher_pile(pile_a, 'a');
 	// afficher_pile(pile_b, 'b');
-	//printf("taille B : %d\n", ft_lstsize(*pile_b));
 	if(ft_lstsize(*pile_a) != (ac-1))
 	{
 		un = ft_calcul(pile_a, *pile_b, ac);
-		// printf("taille pile a : %d\n", ft_lstsize(*pile_a));
-		// printf("calcul 1 : %d\n", ft_calcul(pile_a, *pile_b, ac));
-		// printf("calcul 2 : %d\n", (ft_calcul(pile_a, ft_lstlast(*pile_b), ac) + 1));
 		if (ft_lstsize(*pile_b) >= 2)
 		{
 			deux = (ft_calcul(pile_a, deuxieme_b, ac) + 1);
@@ -123,7 +78,6 @@ void ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int ac)
 		}
 		else if (un <= trois && un <= deux && un <= av_trois)
 		{
-			//printf("1\n");
 			if ((ft_lstsize(*pile_a)/2) <= ft_duo(pile_a, *pile_b, ac))
 				ft_trier_bas(pile_a, pile_b, (ft_calcul(pile_a, *pile_b, ac) - 1));
 			else
@@ -136,25 +90,17 @@ void ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int ac)
 		else if (av_trois <= un && av_trois <= deux && av_trois <= trois)
 		{
 			ft_rra_rrb(pile_b, 'b');
-			ft_rra_rrb(pile_b, 'b');
-			if ((ft_lstsize(*pile_a)/2) <= ft_duo(pile_a, *pile_b, ac))
-				ft_trier_bas(pile_a, pile_b, (ft_calcul(pile_a, *pile_b, ac) - 1));
+			if ((ft_lstsize(*pile_a)/2) <= ft_duo(pile_a, ft_lstlast(*pile_b), ac))
+				ft_rrr(pile_a, pile_b);
 			else
-				ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
+				ft_rra_rrb(pile_b, 'b');
 		}
 		else if (trois <= un && trois <= deux && trois <= av_trois)
 		{
-			//printf("2\n");
 			if ((ft_lstsize(*pile_a)/2) <= ft_duo(pile_a, ft_lstlast(*pile_b), ac))
-			{
 				ft_rrr(pile_a, pile_b);
-				ft_trier_bas(pile_a, pile_b, (ft_calcul(pile_a, *pile_b, ac) - 2));
-			}
 			else
-			{
 				ft_rra_rrb(pile_b, 'b');
-				ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
-			}
 		}
 		ft_je_sais_pas_ptn(pile_a, pile_b, ac);
 	}
