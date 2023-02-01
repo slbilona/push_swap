@@ -1,5 +1,10 @@
 #include "header.h"
 
+/*
+ft_tri_int
+ft_place
+*/
+
 void	ft_tri_int(long int *nombres, int ac)
 {
 	int	i;

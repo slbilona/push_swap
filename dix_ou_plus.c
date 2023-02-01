@@ -1,7 +1,19 @@
 #include "header.h"
 
+/*
+ft_principale
+ft_clement
+ft_fini_a
+ft_je_sais_pas_ptn
+ft_trier_haut
+ft_trier_bas
+ft_que_3
+ft_position
+ft_calcul
+ft_duo
+*/
+
 void	afficher_pile(t_list **pile, char c);
-int ft_duo_deuxieme(t_list **pile_a, t_list *element);
 
 void	ft_principale(t_list **pile_a, t_list **pile_b, int ac)
 {
@@ -12,7 +24,7 @@ void	ft_principale(t_list **pile_a, t_list **pile_b, int ac)
 	ft_je_sais_pas_ptn(pile_a, pile_b, ac);
 }
 
-void ft_clement(t_list **pile_a, t_list **pile_b)
+void	ft_clement(t_list **pile_a, t_list **pile_b)
 {
 	t_list *premier_b;
 	t_list *actuel_a;
@@ -28,7 +40,7 @@ void ft_clement(t_list **pile_a, t_list **pile_b)
 		ft_pa_pb(pile_b, pile_a, 'a');
 }
 
-void ft_fini_a(t_list **pile_a)
+void	ft_fini_a(t_list **pile_a)
 {
 	t_list *premier_a;
 
@@ -40,7 +52,7 @@ void ft_fini_a(t_list **pile_a)
 	}
 }
 
-void ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int ac)
+void	ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int ac)
 {
 	t_list *deuxieme_b;
 	int un;
@@ -84,9 +96,7 @@ void ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int ac)
 				ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, ac) - 1);
 		}
 		else if (deux <= un && deux <= trois && deux <= av_trois)
-		{
 			ft_sa_sb(pile_b, 'b');
-		}
 		else if (av_trois <= un && av_trois <= deux && av_trois <= trois)
 		{
 			ft_rra_rrb(pile_b, 'b');
@@ -132,7 +142,7 @@ void	ft_trier_bas(t_list **pile_a, t_list **pile_b, int mouv)
 	ft_pa_pb(pile_b, pile_a, 'a');
 }
 
-void 	ft_que_3(t_list **pile_a, t_list **pile_b, int ac)
+void	ft_que_3(t_list **pile_a, t_list **pile_b, int ac)
 {
 	t_list	*actuel;
 	int		i;
@@ -143,7 +153,7 @@ void 	ft_que_3(t_list **pile_a, t_list **pile_b, int ac)
 		actuel = *pile_a;
 		if (actuel->place == (ac - 4) || actuel->place == (ac - 3) || actuel->place == (ac - 2))
 			ft_ra_rb(pile_a, 'a');
-		else if (actuel->place >= ((ac-4)/2))
+		else if (actuel->place >= ((ac-4) /2))
 			ft_pa_pb(pile_a, pile_b, 'b');
 		else
 		{
@@ -173,20 +183,19 @@ int	ft_calcul(t_list **pile, t_list *element, int ac)
 {
 	int	compte;
 
-	compte = 0; 
-	if ((ft_lstsize(*pile)/2) <= ft_duo(pile, element, ac))
+	compte = 0;
+	if ((ft_lstsize(*pile) / 2) <= ft_duo(pile, element, ac))
 		compte = (ft_lstsize(*pile)) - ft_duo(pile, element, ac);
 	else
 		compte = ft_duo(pile, element, ac);
 	return (compte + 1);
-	
 }
 
 int	ft_duo(t_list **pile_a, t_list *element, int ac)
 {
 	t_list	*actuel;
 	int		i;
-	
+
 	i = 1;
 	while (i < (ac - 1))
 	{
@@ -199,15 +208,5 @@ int	ft_duo(t_list **pile_a, t_list *element, int ac)
 		}
 		i++;
 	}
-	return (0);
-}
-
-int ft_duo_deuxieme(t_list **pile_a, t_list *element)
-{
-	t_list *premier_a;
-
-	premier_a = *pile_a;
-	if((element->place + 1) == premier_a->place)
-		return (1);
 	return (0);
 }

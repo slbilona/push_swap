@@ -1,5 +1,12 @@
 #include "header.h"
 
+/*
+ft_tri_pile_a
+ft_algo
+ft_algo_2
+ft_verif_ordre
+*/
+
 void	afficher_pile(t_list **pile, char c);
 
 void	ft_tri_pile_a(t_list **pile_a, t_list **pile_b, int ac)

@@ -1,5 +1,9 @@
 #include "header.h"
-
+/*
+ft_algo_b
+ft_algo_2_b
+ft_b_dans_a
+*/
 void	afficher_pile(t_list **pile, char c);
 
 void	ft_algo_b(t_list **pile_b)

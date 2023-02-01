@@ -1,5 +1,14 @@
 #include "header.h"
 
+/*
+	ft_pile_a
+	ft_lstnew
+	ft_lstadd_front
+	ft_lstsize
+	ft_lstlast
+	ft_vide_liste
+*/
+
 t_list	*ft_pile_a(long int *nombres, int ac)
 {
 	t_list	*list;

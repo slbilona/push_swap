@@ -33,8 +33,6 @@ int	ft_push_swap(int ac, char **av)
 	t_list		*premier_b;
 	t_list		*pile_a;
 
-	if (ac <= 1)
-		return (1);
 	nombres = ft_verif(ac, av);
 	if (!nombres)
 	{
@@ -48,7 +46,7 @@ int	ft_push_swap(int ac, char **av)
 		premier_b = NULL;
 		ft_tri_int(nombres, ac);
 		ft_place(nombres, &premier_a, ac);
-		if (ac <= 11)
+		if (ac <= 10)
 		{
 			ft_tri_pile_a(&premier_a, &premier_b, ac);
 			ft_algo(&premier_a);
@@ -64,15 +62,10 @@ int	ft_push_swap(int ac, char **av)
 		}
 		else
 			ft_principale(&premier_a, &premier_b, ac);
-		// afficher_pile(&premier_a, 'a');
-		// afficher_pile(&premier_b, 'b');
 		free(nombres);
 	}
 	else
-	{
-		free(nombres);
-		return (0);
-	}
+		return (free(nombres), 0);
 	ft_vide_liste(&premier_a);
 	if (premier_b)
 	{
@@ -83,6 +76,9 @@ int	ft_push_swap(int ac, char **av)
 
 int	main(int ac, char **av)
 {
-	ft_push_swap(ac, av);
+	if (ac >= 2)
+	{
+		ft_push_swap(ac, av);
+	}
 	return (0);
 }

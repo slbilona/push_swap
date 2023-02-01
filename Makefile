@@ -9,9 +9,17 @@ SRCS = main.c \
 	dix_ou_plus.c \
 	ft_encore_un_fichier.c \
 
+SRCSB = bonus.c \
+	checkers.c \
+	ft_atoi_long_int.c \
+	listes_chainees.c \
+	mouvements.c \
+
 LIBFT = Libft_clone/libft.a
 
 OBJS = $(SRCS:.c=.o)
+
+OBJSB = $(SRCSB:.c=.o)
 
 CC = gcc
 
@@ -21,7 +29,13 @@ RM = rm -f
 
 NAME = push_swap
 
+NAMEB = checker
+
 all : $(NAME)
+
+bonus : $(OBJSB)
+	make -C Libft_clone
+	$(CC) $(OBJSB) $(LIBFT) -o $(NAMEB) -g
 
 $(NAME) : $(OBJS)
 	make -C Libft_clone
@@ -33,7 +47,7 @@ clean :
 
 fclean :
 	make fclean -C Libft_clone
-	$(RM) *.o $(NAME)
+	$(RM) *.o $(NAME) $(NAMEB)
 
 re : fclean all
 
@@ -42,4 +56,4 @@ git : fclean
 	git commit
 	git push
 
-.PHONY : re all clean fclean
+.PHONY : re all clean fclean bonus git

@@ -1,5 +1,14 @@
 #include "header.h"
 
+/*
+ft_sa_sb
+ft_pa_pb
+ft_ra_rb
+ft_rra_rrb
+ft_almostlast
+ft_rrr
+*/
+
 void	ft_sa_sb(t_list **pile, char c)
 {
 	t_list	*chaine1;
