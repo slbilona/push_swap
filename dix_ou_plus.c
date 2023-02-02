@@ -40,15 +40,29 @@ void	ft_clement(t_list **pile_a, t_list **pile_b)
 		ft_pa_pb(pile_b, pile_a, 'a');
 }
 
-void	ft_fini_a(t_list **pile_a)
+t_list *ft_place_une(t_list **pile_a)
+{
+	t_list *actuel;
+
+	actuel = *pile_a;
+	while(actuel->place != 0)
+		actuel = actuel->next;
+	return (actuel);
+}
+
+void	ft_fini_a(t_list **pile_a, t_list *place_une)
 {
 	t_list *premier_a;
 
+	ft_position(pile_a);
 	premier_a = *pile_a;
 	if(premier_a->place != 0)
 	{
-		ft_rra_rrb(pile_a, 'a');
-		ft_fini_a(pile_a);
+		if (place_une->position <= (ft_lstsize(*pile_a) / 2))
+			ft_ra_rb(pile_a, 'a');
+		else
+			ft_rra_rrb(pile_a, 'a');
+		ft_fini_a(pile_a, place_une);
 	}
 }
 
@@ -85,7 +99,7 @@ void	ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int ac)
 		if (ft_lstsize(*pile_b) == 1)
 		{
 			ft_clement(pile_a, pile_b);
-			ft_fini_a(pile_a);
+			ft_fini_a(pile_a, ft_place_une(pile_a));
 			return ;
 		}
 		else if (un <= trois && un <= deux && un <= av_trois)
@@ -148,7 +162,7 @@ void	ft_que_3(t_list **pile_a, t_list **pile_b, int ac)
 	int		i;
 
 	i = 0;
-	while (i < (ac - 1))
+	while (ft_lstsize(*pile_a) > 3)
 	{
 		actuel = *pile_a;
 		if (actuel->place == (ac - 4) || actuel->place == (ac - 3) || actuel->place == (ac - 2))
