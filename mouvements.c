@@ -47,7 +47,7 @@ void	ft_ra_rb(t_list **pile, char c)
 	t_list	*chaine2;
 	t_list	*derniere;
 
-	if (ft_lstsize(*pile) >= 2)
+	if (ft_lstsize(*pile) >= 3)
 	{
 		chaine1 = *pile;
 		derniere = ft_lstlast(*pile);
@@ -57,6 +57,8 @@ void	ft_ra_rb(t_list **pile, char c)
 		*pile = chaine2;
 		printf("r%c\n", c);
 	}
+	else if (ft_lstsize(*pile) == 2)
+		ft_sa_sb(pile, c);
 }
 
 void	ft_rra_rrb(t_list **pile, char c)

@@ -14,6 +14,7 @@ ft_duo
 */
 
 void	afficher_pile(t_list **pile, char c);
+t_list	*ft_emplacement(t_list **pile_a, int i);
 
 void	ft_principale(t_list **pile_a, t_list **pile_b, int ac)
 {
@@ -26,37 +27,39 @@ void	ft_principale(t_list **pile_a, t_list **pile_b, int ac)
 
 void	ft_clement(t_list **pile_a, t_list **pile_b)
 {
+	t_list *sup;
 	t_list *premier_b;
-	t_list *actuel_a;
 
 	premier_b = *pile_b;
-	actuel_a = *pile_a;
-	if (actuel_a->place != (premier_b->place + 1))
+	sup = ft_emplacement(pile_a, (premier_b->place + 1));
+	ft_position(pile_a);
+	if (sup->position != 0)
 	{
-		ft_ra_rb(pile_a, 'a');
+		if (sup->position <= (ft_lstsize(*pile_a) / 2))
+			ft_ra_rb(pile_a, 'a');
+		else
+			ft_rra_rrb(pile_a, 'a');
 		ft_clement(pile_a, pile_b);
 	}
-	if (actuel_a->place == (premier_b->place + 1))
-		ft_pa_pb(pile_b, pile_a, 'a');
+	ft_pa_pb(pile_b, pile_a, 'a');
 }
 
-t_list *ft_place_une(t_list **pile_a)
+t_list	*ft_emplacement(t_list **pile_a, int i)
 {
 	t_list *actuel;
 
 	actuel = *pile_a;
-	while(actuel->place != 0)
+	while(actuel->place != i)
 		actuel = actuel->next;
 	return (actuel);
 }
 
 void	ft_fini_a(t_list **pile_a, t_list *place_une)
 {
-	t_list *premier_a;
+	t_list	*premier_a;
 
-	ft_position(pile_a);
 	premier_a = *pile_a;
-	if(premier_a->place != 0)
+	if (premier_a->place != 0)
 	{
 		if (place_une->position <= (ft_lstsize(*pile_a) / 2))
 			ft_ra_rb(pile_a, 'a');
@@ -65,7 +68,7 @@ void	ft_fini_a(t_list **pile_a, t_list *place_une)
 		ft_fini_a(pile_a, place_une);
 	}
 }
-
+/*
 void	ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int ac)
 {
 	t_list *deuxieme_b;
@@ -99,7 +102,7 @@ void	ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int ac)
 		if (ft_lstsize(*pile_b) == 1)
 		{
 			ft_clement(pile_a, pile_b);
-			ft_fini_a(pile_a, ft_place_une(pile_a));
+			ft_fini_a(pile_a, ft_emplacement(pile_a, 0));
 			return ;
 		}
 		else if (un <= trois && un <= deux && un <= av_trois)
@@ -128,7 +131,7 @@ void	ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int ac)
 		}
 		ft_je_sais_pas_ptn(pile_a, pile_b, ac);
 	}
-}
+}*/
 
 void	ft_trier_haut(t_list **pile_a, t_list **pile_b, int mouv)
 {

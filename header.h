@@ -56,6 +56,9 @@ void		ft_principale(t_list **pile_a, t_list **pile_b, int ac);
 void		ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int ac);
 void		ft_trier_bas(t_list **pile_a, t_list **pile_b, int mouv);
 void		ft_trier_haut(t_list **pile_a, t_list **pile_b, int mouv);
+t_list	*ft_emplacement(t_list **pile_a, int i);
+void	ft_fini_a(t_list **pile_a, t_list *place_une);
+void	ft_clement(t_list **pile_a, t_list **pile_b);
 
 //autre
 int			ft_lstsize(t_list *lst);
