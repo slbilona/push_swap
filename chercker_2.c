@@ -21,7 +21,7 @@ long int	*ft_verif(int ac, char **av)
 		//printf("🙁 dsl ma belle 🙁\n");
 		return (NULL);
 	}
-	nombres = ft_int_nombres(ft_nombre_de_nombres(av), av);
+	nombres = ft_int_nombres(ac, av);
 	if (!nombres)
 	{
 		//printf("🙁 dsl ma belle 🙁\n");
@@ -54,7 +54,7 @@ int	ft_chiffres(char **av)
 		}
 		while (av[j][i])
 		{
-			if (ft_isdigit(av[j][i]) == 1 || av[j][i] == 32)
+			if (ft_isdigit(av[j][i]) == 1)
 			{
 				i++;
 				o--;
@@ -69,38 +69,6 @@ int	ft_chiffres(char **av)
 	return (1);
 }
 
-int ft_nombre_de_nombres(char **av)
-{
-	int i;
-	int j;
-	int mots;
-
-	j = 1;
-	mots = 0;
-	while (av[j])
-	{
-		i = 0;
-		while (av[j][i])
-		{
-			while(av[j][i] && av[j][i] == ' ')
-				i++;
-			if(av[j][i])
-				mots++;
-			while(av[j][i] && av[j][i] != ' ')
-				i++;
-		}
-		j++;
-	}
-	return (mots);
-}
-
-// long int *ft_int_nombres(int ac, char **av)
-// {
-// 	long int *nombres;
-
-// 	nombres = malloc(sizeof(long int) * ...);
-// }
-/*
 long int	*ft_int_nombres(int ac, char **av)
 {
 	long int	*nombres;
@@ -109,7 +77,7 @@ long int	*ft_int_nombres(int ac, char **av)
 
 	i = ac -2;
 	j = 1;
-	nombres = malloc(sizeof(long int) * (ft_nombre_de_nombres(av)));
+	nombres = malloc(sizeof(long int) * (ac - 1));
 	if (!nombres)
 		return (NULL);
 	while (j < ac && i >= 0)
@@ -128,71 +96,19 @@ long int	*ft_int_nombres(int ac, char **av)
 	// 	printf("%ld, ", nombres[i++]);
 	// printf("\n");
 	return (nombres);
-}*/
-
-long int	*ft_int_nombres(int nombre, char **av)
-{
-	long int	*nombres;
-	char		**temp;
-	int			i;
-	int			j;
-	int			o;
-
-	i = nombre - 1;
-	j = 1;
-	nombres = (long int *)malloc(sizeof(long int) * (nombre));
-	if (!nombres)
-		return (NULL);
-	while (i >= 0)
-	{
-		temp = ft_split(av[j], ' ');
-		o = 0;
-		while (temp[o] && i >= 0)
-		{
-			//printf("%s\n", temp[o]);
-			nombres[i] = ft_atoi_long_int(temp[o]);
-			if (nombres[i] > 2147483648 || nombres[i] < -2147483647)
-			{
-				while(o >= 0)
-				{
-					free(temp[o]);
-					o--;
-				}
-				free(temp);
-				free(nombres);
-				return (NULL);
-			}
-			i--;
-			o++;
-		}
-		o = 0;
-		while(temp[o])
-			free(temp[o++]);
-		free(temp);
-		j++;
-	}
-	// i = 0;
-	// printf("%ld\n", nombres[0]);
-	// while (i < nombre)
-	// {
-	// 	printf("%ld, ", nombres[i++]);
-	// }
-	// printf("\n");
-	
-	return (nombres);
 }
 
-int	ft_doublons(long int *nombres, int taille)
+int	ft_doublons(long int *nombres, int ac)
 {
 	int i;
 	int j;
 
 	i = 0;
 	j = 0;
-	while(i < taille)
+	while(i < ac - 1)
 	{
 		j = i + 1;
-		while(j < (taille - 1))
+		while(j < ac - 1)
 		{
 			if(nombres[i] == nombres[j])
 			{
@@ -206,12 +122,12 @@ int	ft_doublons(long int *nombres, int taille)
 	return (1);
 }
 
-int	ft_ordre(int taille, long int *nombres)
+int	ft_ordre(int ac, long int *nombres)
 {
 	int	i;
 
 	i = 0;
-	while (i < (taille - 2))
+	while (i < (ac - 2))
 	{
 		if (nombres[i] < nombres[i + 1])
 			return (0);

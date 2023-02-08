@@ -35,11 +35,11 @@ all : $(NAME)
 
 bonus : $(OBJSB)
 	make -C Libft_clone
-	$(CC) $(OBJSB) $(LIBFT) -o $(NAMEB) -g
+	$(CC) $(OBJSB)  $(LIBFT) -o $(NAMEB) -g
 
 $(NAME) : $(OBJS)
 	make -C Libft_clone
-	$(CC) $(OBJS) $(LIBFT) -o $(NAME) -g
+	$(CC) $(OBJS) $(LIBFT) -o $(NAME) -g 
 
 clean : 
 	make clean -C Libft_clone

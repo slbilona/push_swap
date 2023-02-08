@@ -27,7 +27,7 @@ typedef struct s_list
 
 //parsing
 int			ft_chiffres(char **av);
-int			ft_ordre(int ac, long int *nombres);
+int			ft_ordre(int taille, long int *nombres);
 int			ft_verif_ordre(t_list **pile, char c);
 int			ft_doublons(long int *nombres, int ac);
 long int	*ft_verif(int ac, char **av);
@@ -59,6 +59,7 @@ void		ft_trier_haut(t_list **pile_a, t_list **pile_b, int mouv);
 t_list	*ft_emplacement(t_list **pile_a, int i);
 void	ft_fini_a(t_list **pile_a, t_list *place_une);
 void	ft_clement(t_list **pile_a, t_list **pile_b);
+int ft_nombre_de_nombres(char **av);
 
 //autre
 int			ft_lstsize(t_list *lst);

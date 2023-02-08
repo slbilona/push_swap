@@ -76,7 +76,19 @@ int	ft_push_swap(int ac, char **av)
 
 int	main(int ac, char **av)
 {
-	if (ac >= 2)
+	// char *s;
+	// char **str;
+	// int i = 0;
+
+	// s = "salut";
+	// str = ft_split(s, ' ');
+	// while(str[i])
+	// 	printf("%s\n", str[i++]);
+	// i = 0;
+	// while(str[i])
+	// 	free(str[i++]);
+	// free(str);
+	if(ac >= 2)
 	{
 		ft_push_swap(ac, av);
 	}
