@@ -9,7 +9,7 @@
 	ft_vide_liste
 */
 
-t_list	*ft_pile_a(long int *nombres, int ac)
+t_list	*ft_pile_a(long int *nombres, int nb_de_nb)
 {
 	t_list	*list;
 	//t_list	*test;
@@ -18,7 +18,7 @@ t_list	*ft_pile_a(long int *nombres, int ac)
 	i = 0;
 	list = ft_lstnew(nombres[i]);
 	i++;
-	while (i < (ac - 1))
+	while (i < nb_de_nb)
 	{
 		ft_lstadd_front(&list, ft_lstnew(nombres[i]));
 		i++;

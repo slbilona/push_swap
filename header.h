@@ -29,8 +29,8 @@ typedef struct s_list
 int			ft_chiffres(char **av);
 int			ft_ordre(int taille, long int *nombres);
 int			ft_verif_ordre(t_list **pile, char c);
-int			ft_doublons(long int *nombres, int ac);
-long int	*ft_verif(int ac, char **av);
+int			ft_doublons(long int *nombres, int nb_de_nb);
+long int	*ft_verif(int nb_de_nb, char **av);
 
 //mouvements
 void		ft_ra_rb(t_list **pile, char c);
@@ -45,15 +45,15 @@ void		ft_algo_b(t_list **pile_b);
 void		ft_algo_2(t_list **pile_a);
 void		ft_algo_2_b(t_list **pile_b);
 void		ft_b_dans_a(t_list **pile_a, t_list **pile_b);
-void		ft_tri_pile_a(t_list **pile_a, t_list **pile_b, int ac);
+void		ft_tri_pile_a(t_list **pile_a, t_list **pile_b, int nb_de_nb);
 
 //plus de 10
-int			ft_duo(t_list **pile_a, t_list *element, int ac);
-int			ft_calcul(t_list **pile, t_list *element, int ac);
+int			ft_duo(t_list **pile_a, t_list *element, int nb_de_nb);
+int			ft_calcul(t_list **pile, t_list *element, int nb_de_nb);
 void		ft_position(t_list **pile);
 void 		ft_que_3(t_list **pile_a, t_list **pile_b, int ac);
 void		ft_principale(t_list **pile_a, t_list **pile_b, int ac);
-void		ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int ac);
+void		ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int nb_de_nb);
 void		ft_trier_bas(t_list **pile_a, t_list **pile_b, int mouv);
 void		ft_trier_haut(t_list **pile_a, t_list **pile_b, int mouv);
 t_list	*ft_emplacement(t_list **pile_a, int i);
@@ -63,15 +63,15 @@ int ft_nombre_de_nombres(char **av);
 
 //autre
 int			ft_lstsize(t_list *lst);
-int			ft_push_swap(int ac, char **av);
+int			ft_push_swap(char **av);
 void		ft_vide_liste(t_list **pile);
-void		ft_tri_int(long int *nombres, int ac);
+void		ft_tri_int(long int *nombres, int nb_de_nb);
 void		ft_lstadd_front(t_list **lst, t_list *new);
-void		ft_place(long int *nombres, t_list **pile_a, int ac);
+void		ft_place(long int *nombres, t_list **pile_a, int nb_de_nb);
 t_list		*ft_lstnew(int content);
 t_list		*ft_lstlast(t_list *lst);
 t_list		*ft_almostlast(t_list *lst);
-t_list		*ft_pile_a(long int *nombres, int ac);
+t_list		*ft_pile_a(long int *nombres, int nb_de_nb);
 long int	ft_atoi_long_int(const char *nptr);
 long int	*ft_int_nombres(int ac, char **av);
 

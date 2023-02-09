@@ -16,13 +16,15 @@ ft_duo
 void	afficher_pile(t_list **pile, char c);
 t_list	*ft_emplacement(t_list **pile_a, int i);
 
-void	ft_principale(t_list **pile_a, t_list **pile_b, int ac)
+void	ft_principale(t_list **pile_a, t_list **pile_b, int nb_de_nb)
 {
 	// afficher_pile(pile_a, 'a');
 	// afficher_pile(pile_b, 'b');
-	ft_que_3(pile_a, pile_b, ac);
+	ft_que_3(pile_a, pile_b, nb_de_nb);
+	// afficher_pile(pile_a, 'a');
+	// afficher_pile(pile_b, 'b');
 	ft_algo(pile_a);
-	ft_je_sais_pas_ptn(pile_a, pile_b, ac);
+	ft_je_sais_pas_ptn(pile_a, pile_b, nb_de_nb);
 }
 
 void	ft_clement(t_list **pile_a, t_list **pile_b)
@@ -41,7 +43,6 @@ void	ft_clement(t_list **pile_a, t_list **pile_b)
 			ft_rra_rrb(pile_a, 'a');
 		ft_clement(pile_a, pile_b);
 	}
-	ft_pa_pb(pile_b, pile_a, 'a');
 }
 
 t_list	*ft_emplacement(t_list **pile_a, int i)
@@ -61,6 +62,7 @@ void	ft_fini_a(t_list **pile_a, t_list *place_une)
 	premier_a = *pile_a;
 	if (premier_a->place != 0)
 	{
+		//printf("place une : %d, moitie : %d\n", place_une->position, (ft_lstsize(*pile_a) / 2));
 		if (place_une->position <= (ft_lstsize(*pile_a) / 2))
 			ft_ra_rb(pile_a, 'a');
 		else
@@ -159,7 +161,7 @@ void	ft_trier_bas(t_list **pile_a, t_list **pile_b, int mouv)
 	ft_pa_pb(pile_b, pile_a, 'a');
 }
 
-void	ft_que_3(t_list **pile_a, t_list **pile_b, int ac)
+void	ft_que_3(t_list **pile_a, t_list **pile_b, int nb_de_nb)
 {
 	t_list	*actuel;
 	int		i;
@@ -168,9 +170,9 @@ void	ft_que_3(t_list **pile_a, t_list **pile_b, int ac)
 	while (ft_lstsize(*pile_a) > 3)
 	{
 		actuel = *pile_a;
-		if (actuel->place == (ac - 4) || actuel->place == (ac - 3) || actuel->place == (ac - 2))
+		if (actuel->place == (nb_de_nb - 3) || actuel->place == (nb_de_nb - 2) || actuel->place == (nb_de_nb - 1))
 			ft_ra_rb(pile_a, 'a');
-		else if (actuel->place >= ((ac-4) /2))
+		else if (actuel->place >= ((nb_de_nb-3) /2))
 			ft_pa_pb(pile_a, pile_b, 'b');
 		else
 		{
@@ -196,25 +198,25 @@ void	ft_position(t_list **pile)
 	}
 }
 
-int	ft_calcul(t_list **pile, t_list *element, int ac)
+int	ft_calcul(t_list **pile, t_list *element, int nb_de_nb)
 {
 	int	compte;
 
 	compte = 0;
-	if ((ft_lstsize(*pile) / 2) <= ft_duo(pile, element, ac))
-		compte = (ft_lstsize(*pile)) - ft_duo(pile, element, ac);
+	if ((ft_lstsize(*pile) / 2) <= ft_duo(pile, element, nb_de_nb))
+		compte = (ft_lstsize(*pile)) - ft_duo(pile, element, nb_de_nb);
 	else
-		compte = ft_duo(pile, element, ac);
+		compte = ft_duo(pile, element, nb_de_nb);
 	return (compte + 1);
 }
 
-int	ft_duo(t_list **pile_a, t_list *element, int ac)
+int	ft_duo(t_list **pile_a, t_list *element, int nb_de_nb)
 {
 	t_list	*actuel;
 	int		i;
 
 	i = 1;
-	while (i < (ac - 1))
+	while (i < nb_de_nb)
 	{
 		actuel = *pile_a;
 		while (actuel)

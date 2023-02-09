@@ -5,14 +5,14 @@ ft_tri_int
 ft_place
 */
 
-void	ft_tri_int(long int *nombres, int ac)
+void	ft_tri_int(long int *nombres, int nb_de_nb)
 {
 	int	i;
 	int	temp;
 
 	temp = 0;
 	i = 0;
-	while (i < (ac - 2))
+	while (i < (nb_de_nb - 1))
 	{
 		if (nombres[i] > nombres[i + 1])
 		{
@@ -31,14 +31,14 @@ void	ft_tri_int(long int *nombres, int ac)
 	// printf("\n");
 }
 
-void	ft_place(long int *nombres, t_list **pile_a, int ac)
+void	ft_place(long int *nombres, t_list **pile_a, int nb_de_nb)
 {
 	t_list	*actuel;
 	int		i;
 
 	actuel = *pile_a;
 	i = 0;
-	while (i < (ac - 1))
+	while (i < nb_de_nb)
 	{
 		actuel = *pile_a;
 		while (actuel)
