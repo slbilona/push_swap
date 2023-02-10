@@ -24,11 +24,6 @@ void	ft_tri_int(long int *nombres, int nb_de_nb)
 		else
 			i++;
 	}
-	// i = 0;
-	// int j = 1;
-	// while (j++ < ac)
-	// 	printf("%ld, ", nombres[i++]);
-	// printf("\n");
 }
 
 void	ft_place(long int *nombres, t_list **pile_a, int nb_de_nb)
@@ -54,3 +49,24 @@ void	ft_place(long int *nombres, t_list **pile_a, int nb_de_nb)
 		i++;
 	}
 }
+
+int	ft_duo(t_list **pile_a, t_list *element, int nb_de_nb)
+{
+	t_list	*actuel;
+	int		i;
+
+	i = 1;
+	while (i < nb_de_nb)
+	{
+		actuel = *pile_a;
+		while (actuel)
+		{
+			if (actuel->place == (element->place + i))
+				return (actuel->position);
+			actuel = actuel->next;
+		}
+		i++;
+	}
+	return (0);
+}
+

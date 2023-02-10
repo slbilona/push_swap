@@ -47,14 +47,15 @@ int	ft_push_swap(char **av)
 	{
 		pile_a = ft_pile_a(nombres, nb_de_nb);
 		premier_a = pile_a;
-		//afficher_pile(&premier_a, 'a');
 		premier_b = NULL;
 		ft_tri_int(nombres, nb_de_nb);
 		ft_place(nombres, &premier_a, nb_de_nb);
 		if (nb_de_nb <= 10)
 		{
-			ft_tri_pile_a(&premier_a, &premier_b, nb_de_nb);
+			if(nb_de_nb > 3)
+				ft_tri_pile_a(&premier_a, &premier_b, nb_de_nb);
 			ft_algo(&premier_a);
+			
 			if (premier_b != NULL)
 			{
 				ft_algo_b(&premier_b);
@@ -81,16 +82,8 @@ int	ft_push_swap(char **av)
 
 int	main(int ac, char **av)
 {
-	if(ac >= 2)
+	if (ac >= 2)
 	{
 		ft_push_swap(av);
 	}
-	// if (ac >= 2)
-	// {
-	// 	long int *nombres = ft_verif(ft_nombre_de_nombres(av), av);
-	// 	if(nombres)
-	// 		printf("%d\n", ft_ordre(ft_nombre_de_nombres(av), nombres));
-	// 	free(nombres);
-	// }
-	// return (0);
 }

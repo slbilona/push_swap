@@ -103,7 +103,7 @@ t_list	*ft_almostlast(t_list *lst)
 	return (pretemp);
 }
 
-void ft_rrr(t_list **pile_a, t_list **pile_b)
+void	ft_rrr(t_list **pile_a, t_list **pile_b)
 {
 	t_list	*chaine1;
 	t_list	*av_dernier;

@@ -1,23 +1,22 @@
 #include "header.h"
 
-int ft_choix_b(t_list **pile_a,t_list **pile_b, int nb_de_nb)
+int	ft_choix_b(t_list **pile_a, t_list **pile_b, int nb_de_nb)
 {
-	t_list *actuel;
-	t_list *meilleur;
-	int i;
-	int calc;
+	t_list	*actuel;
+	t_list	*meilleur;
+	int		i;
+	int		calc;
 
-	actuel  = *pile_b;
+	actuel = *pile_b;
 	meilleur = actuel;
 	i = 0;
 	calc = ft_calcul(pile_a, actuel, nb_de_nb);
-	while(actuel)
+	while (actuel)
 	{
 		if (actuel->position <= (ft_lstsize(*pile_b) / 2))
 			i = actuel->position;
 		else
 			i = ft_lstsize(*pile_b) - actuel->position;
-		//printf("%d\n", (ft_calcul(pile_a, actuel, ac) + i));
 		if ((ft_calcul(pile_a, actuel, nb_de_nb) + i) < calc)
 		{
 			meilleur = actuel;
@@ -28,14 +27,14 @@ int ft_choix_b(t_list **pile_a,t_list **pile_b, int nb_de_nb)
 	return (meilleur->position);
 }
 
-void ft_placer_meileur(int pos_meilleur, t_list **pile_b)
+void	ft_placer_meileur(int pos_meilleur, t_list **pile_b)
 {
-	int mouv;
+	int	mouv;
 
 	if (pos_meilleur <= (ft_lstsize(*pile_b) / 2))
 	{
 		mouv = pos_meilleur;
-		while(mouv)
+		while (mouv)
 		{
 			ft_ra_rb(pile_b, 'b');
 			mouv--;
@@ -44,7 +43,7 @@ void ft_placer_meileur(int pos_meilleur, t_list **pile_b)
 	else
 	{
 		mouv = ft_lstsize(*pile_b) - pos_meilleur;
-		while(mouv)
+		while (mouv)
 		{
 			ft_rra_rrb(pile_b, 'b');
 			mouv--;
@@ -56,7 +55,7 @@ void	ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int nb_de_nb)
 {
 	ft_position(pile_a);
 	ft_position(pile_b);
-	if(ft_lstsize(*pile_a) != nb_de_nb)
+	if (ft_lstsize(*pile_a) != nb_de_nb)
 	{
 		if (ft_lstsize(*pile_b) == 1)
 		{
@@ -67,10 +66,12 @@ void	ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int nb_de_nb)
 			return ;
 		}
 		ft_placer_meileur(ft_choix_b(pile_a, pile_b, nb_de_nb), pile_b);
-		if ((ft_lstsize(*pile_a)/2) <= ft_duo(pile_a, *pile_b, nb_de_nb))
-			ft_trier_bas(pile_a, pile_b, (ft_calcul(pile_a, *pile_b, nb_de_nb) - 1));
+		if ((ft_lstsize(*pile_a) / 2) <= ft_duo(pile_a, *pile_b, nb_de_nb))
+			ft_trier_bas(pile_a, pile_b,
+				(ft_calcul(pile_a, *pile_b, nb_de_nb) - 1));
 		else
-			ft_trier_haut(pile_a, pile_b, ft_calcul(pile_a, *pile_b, nb_de_nb) - 1);
+			ft_trier_haut(pile_a, pile_b,
+				ft_calcul(pile_a, *pile_b, nb_de_nb) - 1);
 		ft_je_sais_pas_ptn(pile_a, pile_b, nb_de_nb);
 	}
 }

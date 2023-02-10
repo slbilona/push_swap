@@ -48,18 +48,18 @@ void		ft_b_dans_a(t_list **pile_a, t_list **pile_b);
 void		ft_tri_pile_a(t_list **pile_a, t_list **pile_b, int nb_de_nb);
 
 //plus de 10
+int			ft_nombre_de_nombres(char **av);
 int			ft_duo(t_list **pile_a, t_list *element, int nb_de_nb);
 int			ft_calcul(t_list **pile, t_list *element, int nb_de_nb);
 void		ft_position(t_list **pile);
-void 		ft_que_3(t_list **pile_a, t_list **pile_b, int ac);
+void		ft_que_3(t_list **pile_a, t_list **pile_b, int ac);
 void		ft_principale(t_list **pile_a, t_list **pile_b, int ac);
 void		ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int nb_de_nb);
 void		ft_trier_bas(t_list **pile_a, t_list **pile_b, int mouv);
 void		ft_trier_haut(t_list **pile_a, t_list **pile_b, int mouv);
-t_list	*ft_emplacement(t_list **pile_a, int i);
-void	ft_fini_a(t_list **pile_a, t_list *place_une);
-void	ft_clement(t_list **pile_a, t_list **pile_b);
-int ft_nombre_de_nombres(char **av);
+void		ft_fini_a(t_list **pile_a, t_list *place_une);
+void		ft_clement(t_list **pile_a, t_list **pile_b);
+t_list		*ft_emplacement(t_list **pile_a, int i);
 
 //autre
 int			ft_lstsize(t_list *lst);

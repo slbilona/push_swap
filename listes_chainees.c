@@ -12,7 +12,6 @@
 t_list	*ft_pile_a(long int *nombres, int nb_de_nb)
 {
 	t_list	*list;
-	//t_list	*test;
 	int		i;
 
 	i = 0;
@@ -23,14 +22,6 @@ t_list	*ft_pile_a(long int *nombres, int nb_de_nb)
 		ft_lstadd_front(&list, ft_lstnew(nombres[i]));
 		i++;
 	}
-	// test = list;
-	// while (test)
-	// {
-	// 	printf("%d, ", test->nombre);
-	// 	test = test->next;
-	// }
-	// free(nombres);
-	// printf("NULL\n");
 	return (list);
 }
 
