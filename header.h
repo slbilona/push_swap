@@ -26,7 +26,7 @@ typedef struct s_list
 }			t_list;
 
 //parsing
-int			ft_chiffres(char **av);
+int			ft_chiffres(char **av, int j, int i);
 int			ft_ordre(int taille, long int *nombres);
 int			ft_verif_ordre(t_list **pile, char c);
 int			ft_doublons(long int *nombres, int nb_de_nb);
@@ -39,18 +39,11 @@ void		ft_rra_rrb(t_list **pile, char c);
 void		ft_rrr(t_list **pile_a, t_list **pile_b);
 void		ft_pa_pb(t_list **pile1, t_list **pile2, char c);
 
-//10 ou moins
-void		ft_algo(t_list **pile_a);
-void		ft_algo_b(t_list **pile_b);
-void		ft_algo_2(t_list **pile_a);
-void		ft_algo_2_b(t_list **pile_b);
-void		ft_b_dans_a(t_list **pile_a, t_list **pile_b);
-void		ft_tri_pile_a(t_list **pile_a, t_list **pile_b, int nb_de_nb);
-
-//plus de 10
+//algo
 int			ft_nombre_de_nombres(char **av);
 int			ft_duo(t_list **pile_a, t_list *element, int nb_de_nb);
 int			ft_calcul(t_list **pile, t_list *element, int nb_de_nb);
+void		ft_algo(t_list **pile_a);
 void		ft_position(t_list **pile);
 void		ft_que_3(t_list **pile_a, t_list **pile_b, int ac);
 void		ft_principale(t_list **pile_a, t_list **pile_b, int ac);
@@ -73,6 +66,6 @@ t_list		*ft_lstlast(t_list *lst);
 t_list		*ft_almostlast(t_list *lst);
 t_list		*ft_pile_a(long int *nombres, int nb_de_nb);
 long int	ft_atoi_long_int(const char *nptr);
-long int	*ft_int_nombres(int ac, char **av);
+long int	*ft_int_nombres(int ac, char **av, int i, int j);
 
 #endif

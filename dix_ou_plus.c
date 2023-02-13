@@ -7,14 +7,8 @@ ft_fini_a
 ft_je_sais_pas_ptn
 ft_trier_haut
 ft_trier_bas
-ft_que_3
 ft_position
-ft_calcul
-ft_duo
 */
-
-void	afficher_pile(t_list **pile, char c);
-t_list	*ft_emplacement(t_list **pile_a, int i);
 
 void	ft_principale(t_list **pile_a, t_list **pile_b, int nb_de_nb)
 {
@@ -92,30 +86,6 @@ void	ft_trier_bas(t_list **pile_a, t_list **pile_b, int mouv)
 	ft_pa_pb(pile_b, pile_a, 'a');
 }
 
-void	ft_que_3(t_list **pile_a, t_list **pile_b, int nb_de_nb)
-{
-	t_list	*actuel;
-	int		i;
-
-	i = 0;
-	while (ft_lstsize(*pile_a) > 3)
-	{
-		actuel = *pile_a;
-		if (actuel->place == (nb_de_nb - 3)
-			|| actuel->place == (nb_de_nb - 2)
-			||actuel->place == (nb_de_nb - 1))
-			ft_ra_rb(pile_a, 'a');
-		else if (actuel->place >= ((nb_de_nb - 3) / 2))
-			ft_pa_pb(pile_a, pile_b, 'b');
-		else
-		{
-			ft_pa_pb(pile_a, pile_b, 'b');
-			ft_ra_rb(pile_b, 'b');
-		}
-		i++;
-	}
-}
-
 void	ft_position(t_list **pile)
 {
 	t_list	*actuel;
@@ -129,16 +99,4 @@ void	ft_position(t_list **pile)
 		actuel = actuel->next;
 		i++;
 	}
-}
-
-int	ft_calcul(t_list **pile, t_list *element, int nb_de_nb)
-{
-	int	compte;
-
-	compte = 0;
-	if ((ft_lstsize(*pile) / 2) <= ft_duo(pile, element, nb_de_nb))
-		compte = (ft_lstsize(*pile)) - ft_duo(pile, element, nb_de_nb);
-	else
-		compte = ft_duo(pile, element, nb_de_nb);
-	return (compte + 1);
 }

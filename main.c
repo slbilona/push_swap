@@ -12,22 +12,6 @@
 
 #include "header.h"
 
-void	afficher_pile(t_list **pile, char c);
-
-void	afficher_pile(t_list **pile, char c)
-{
-	t_list	*test;
-
-	test = *pile;
-	printf("pile %c :\n", c);
-	while (test)
-	{
-		printf("position : %d, place : %d, valeur : %d\n", test->position, test->place, test->nombre);
-		test = test->next;
-	}
-	printf("\n");
-}
-
 int	ft_push_swap(char **av)
 {
 	long int	*nombres;
@@ -39,10 +23,7 @@ int	ft_push_swap(char **av)
 	nb_de_nb = ft_nombre_de_nombres(av);
 	nombres = ft_verif(nb_de_nb, av);
 	if (!nombres)
-	{
-		printf("error");
-		return (1);
-	}
+		printf("error\n");
 	if (!ft_ordre(nb_de_nb, nombres))
 	{
 		pile_a = ft_pile_a(nombres, nb_de_nb);
@@ -50,32 +31,12 @@ int	ft_push_swap(char **av)
 		premier_b = NULL;
 		ft_tri_int(nombres, nb_de_nb);
 		ft_place(nombres, &premier_a, nb_de_nb);
-		if (nb_de_nb <= 10)
-		{
-			if(nb_de_nb > 3)
-				ft_tri_pile_a(&premier_a, &premier_b, nb_de_nb);
+		if (nb_de_nb == 3)
 			ft_algo(&premier_a);
-			
-			if (premier_b != NULL)
-			{
-				ft_algo_b(&premier_b);
-				if (ft_verif_ordre(&premier_a, 'a')
-					&& ft_verif_ordre(&premier_b, 'b'))
-				{
-					ft_b_dans_a(&premier_a, &premier_b);
-				}
-			}
-		}
-		else
-			ft_principale(&premier_a, &premier_b, nb_de_nb);
-		free(nombres);
-	}
-	else
-		return (free(nombres), 0);
-	ft_vide_liste(&premier_a);
-	if (premier_b)
-	{
+		ft_principale(&premier_a, &premier_b, nb_de_nb);
+		ft_vide_liste(&premier_a);
 		ft_vide_liste(&premier_b);
+		free(nombres);
 	}
 	return (0);
 }

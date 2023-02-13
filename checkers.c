@@ -16,9 +16,9 @@ long int	*ft_verif(int nb_de_nb, char **av)
 {
 	long int	*nombres;
 
-	if (!ft_chiffres(av))
+	if (!ft_chiffres(av, 1, 0))
 		return (NULL);
-	nombres = ft_int_nombres(nb_de_nb, av);
+	nombres = ft_int_nombres(nb_de_nb, av, (nb_de_nb - 1), 1);
 	if (!nombres)
 		return (0);
 	if (!ft_doublons(nombres, nb_de_nb))
@@ -26,10 +26,8 @@ long int	*ft_verif(int nb_de_nb, char **av)
 	return (nombres);
 }
 
-int	ft_chiffres(char **av)
+int	ft_chiffres(char **av, int j, int i)
 {
-	int	j;
-	int	i;
 	int	o;
 
 	j = 1;
@@ -46,14 +44,10 @@ int	ft_chiffres(char **av)
 				i++;
 				o++;
 			}
-			while ((ft_isdigit(av[j][i]) == 1) && av[j][i] != 0)
-			{
-				i++;
+			while ((ft_isdigit(av[j][i]) == 1) && av[j][i++] != 0)
 				o--;
-			}
-			if ((ft_isdigit(av[j][i]) == 0 && av[j][i] != ' ') && av[j][i] != 0)
-				return (0);
-			if (o > 0)
+			if (((ft_isdigit(av[j][i]) == 0 && av[j][i] != ' ')
+					&& av[j][i] != 0) || o > 0)
 				return (0);
 		}
 		j++;
@@ -86,16 +80,30 @@ int	ft_nombre_de_nombres(char **av)
 	return (mots);
 }
 
-long int	*ft_int_nombres(int nombre, char **av)
+void	ft_vide_split(int o, char **temp, int i)
+{
+	if (i == 1)
+	{
+		while (o >= 0)
+		{
+			free(temp[o]);
+			o--;
+		}
+	}
+	else if (i == 2)
+	{
+		while (temp[o])
+			free(temp[o++]);
+	}
+	free(temp);
+}
+
+long int	*ft_int_nombres(int nombre, char **av, int i, int j)
 {
 	long int	*nombres;
 	char		**temp;
-	int			i;
-	int			j;
 	int			o;
 
-	i = nombre - 1;
-	j = 1;
 	nombres = (long int *)malloc(sizeof(long int) * (nombre));
 	if (!nombres)
 		return (NULL);
@@ -108,22 +116,13 @@ long int	*ft_int_nombres(int nombre, char **av)
 			nombres[i] = ft_atoi_long_int(temp[o]);
 			if (nombres[i] > 2147483648 || nombres[i] < -2147483647)
 			{
-				while (o >= 0)
-				{
-					free(temp[o]);
-					o--;
-				}
-				free(temp);
-				free(nombres);
-				return (NULL);
+				ft_vide_split(o, temp, 1);
+				return (free(nombres), NULL);
 			}
 			i--;
 			o++;
 		}
-		o = 0;
-		while (temp[o])
-			free(temp[o++]);
-		free(temp);
+		ft_vide_split(0, temp, 2);
 		j++;
 	}	
 	return (nombres);
@@ -158,6 +157,8 @@ int	ft_ordre(int taille, long int *nombres)
 	int	i;
 
 	i = 0;
+	if (!nombres)
+		return (1);
 	while (i < (taille - 1))
 	{
 		if (nombres[i] < nombres[i + 1])
