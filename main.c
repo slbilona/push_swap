@@ -23,7 +23,7 @@ int	ft_push_swap(char **av)
 	nb_de_nb = ft_nombre_de_nombres(av);
 	nombres = ft_verif(nb_de_nb, av);
 	if (!nombres)
-		printf("error\n");
+		printf("Error\n");
 	if (!ft_ordre(nb_de_nb, nombres))
 	{
 		pile_a = ft_pile_a(nombres, nb_de_nb);

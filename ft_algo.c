@@ -7,8 +7,6 @@ ft_algo_2
 ft_verif_ordre
 */
 
-void	afficher_pile(t_list **pile, char c);
-
 void	ft_algo(t_list **pile_a)
 {
 	t_list	*premier;
@@ -38,6 +36,7 @@ void	ft_algo(t_list **pile_a)
 	}
 }
 
+//ENLEVE LE CHAR C
 int	ft_verif_ordre(t_list **pile, char c)
 {
 	t_list	*actuel;

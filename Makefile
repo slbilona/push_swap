@@ -13,7 +13,7 @@ SRCSB = bonus.c \
 	checkers.c \
 	ft_atoi_long_int.c \
 	listes_chainees.c \
-	mouvements.c \
+	mouvements_bn.c \
 
 LIBFT = Libft_clone/libft.a
 
@@ -35,7 +35,7 @@ all : $(NAME)
 
 bonus : $(OBJSB)
 	make -C Libft_clone
-	$(CC) $(OBJSB)  $(LIBFT) -o $(NAMEB) -g
+	$(CC) $(OBJSB) $(LIBFT) -o $(NAMEB) -g
 
 $(NAME) : $(OBJS)
 	make -C Libft_clone
