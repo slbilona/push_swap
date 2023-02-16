@@ -32,10 +32,10 @@ void afficher_pile(t_list **pile_a, t_list **pile_b)
 
 void ft_free_et_exit(char *str, t_list **pile_a, t_list **pile_b)
 {
-	printf("Error\n");
 	free(str);
 	ft_vide_liste(pile_a);
 	ft_vide_liste(pile_b);
+	get_next_line(-1);
 	exit(EXIT_FAILURE);
 }
 
@@ -47,13 +47,20 @@ void ft_attribution(char *str, t_list **pile_a, t_list **pile_b)
 		ft_sa_sb_bn(pile_a);
 	else if (ft_memcmp(str, "pa\n", ft_strlen(str)) == 0)
 		ft_pa_pb_bn(pile_a, pile_b);
+	else if (ft_memcmp(str, "rra\n", ft_strlen(str)) == 0)
+		ft_rra_rrb_bn(pile_a);
+	else if (ft_memcmp(str, "rb\n", ft_strlen(str)) == 0)
+		ft_ra_rb_bn(pile_b);
 	else if (ft_memcmp(str, "^D\n", ft_strlen(str)) == 0)
 	{
-		printf("jsp\n");
-		exit(EXIT_FAILURE);
+		printf("test\n");
+		//ft_free_et_exit(str, pile_a, pile_b);
 	}
 	else
+	{
+		printf("Error\n");
 		ft_free_et_exit(str, pile_a, pile_b);
+	}
 }
 
 void ft_principale_bn(t_list **pile_a, t_list **pile_b)
@@ -63,7 +70,8 @@ void ft_principale_bn(t_list **pile_a, t_list **pile_b)
 	str = get_next_line(0);
 	ft_attribution(str, pile_a, pile_b);
 	free(str);
-	//ft_principale_bn(pile_a, pile_b);
+	afficher_pile(pile_a, pile_b);
+	ft_principale_bn(pile_a, pile_b);
 }
 
 int main(int ac, char **av)
@@ -89,7 +97,6 @@ int main(int ac, char **av)
 		afficher_pile(&premier_a, &premier_b);
 		ft_vide_liste(&premier_a);
 		ft_vide_liste(&premier_b);
-		free(nombres);
 	}
 	
 }
