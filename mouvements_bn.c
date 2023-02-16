@@ -127,3 +127,14 @@ void	ft_rrr_bn(t_list **pile_a, t_list **pile_b)
 			ft_sa_sb_bn(pile_b);
 	}
 }
+
+void ft_rr_bn(t_list **pile_a, t_list **pile_b)
+{
+	if(*pile_a && *pile_b)
+	{
+		ft_ra_rb_bn(pile_a);
+		ft_ra_rb_bn(pile_b);
+	}
+}
+
+void ft_ss_bn(t_list **pile_a)
