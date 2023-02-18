@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:41:18 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/02/18 16:41:19 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/02/18 19:04:27 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_sa_sb(t_list **pile, char c)
 		chaine1->next = chaine2->next;
 		chaine2->next = *pile;
 		*pile = chaine2;
-		printf("s%c\n", c);
+		ft_printf("s%c\n", c);
 	}
 }
 
@@ -50,7 +50,7 @@ void	ft_pa_pb(t_list **pile1, t_list **pile2, char c)
 		*pile1 = chaine1->next;
 		chaine1->next = chaine2;
 	}
-	printf("p%c\n", c);
+	ft_printf("p%c\n", c);
 }
 
 void	ft_ra_rb(t_list **pile, char c)
@@ -67,7 +67,7 @@ void	ft_ra_rb(t_list **pile, char c)
 		chaine2 = chaine1->next;
 		chaine1->next = NULL;
 		*pile = chaine2;
-		printf("r%c\n", c);
+		ft_printf("r%c\n", c);
 	}
 	else if (ft_lstsize(*pile) == 2)
 		ft_sa_sb(pile, c);
@@ -89,7 +89,7 @@ void	ft_rra_rrb(t_list **pile, char c)
 			av_dernier->next = NULL;
 			dernier->next = chaine1;
 			*pile = dernier;
-			printf("rr%c\n", c);
+			ft_printf("rr%c\n", c);
 		}
 		else if (ft_lstsize(*pile) == 2)
 			ft_sa_sb(pile, c);
@@ -121,6 +121,6 @@ void	ft_rrr(t_list **pile_a, t_list **pile_b)
 		}
 		else if (ft_lstsize(*pile_b) == 2)
 			ft_sa_sb(pile_b, 'b');
-		printf("rrr\n");
+		ft_printf("rrr\n");
 	}
 }

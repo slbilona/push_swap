@@ -17,9 +17,11 @@ SRCSB = bonus/bonus.c \
 	listes_chainees.c \
 	listes_chainees2.c \
 	bonus/mouvements_bn.c \
+	bonus/mouvements_bn2.c \
 	bonus/main_bonus.c \
 
 LIBFT = Libft_clone/libft.a
+FT_PRINTF = Libft_clone/ft_printf/libftprintf.a
 
 OBJS = $(SRCS:.c=.o)
 
@@ -39,15 +41,15 @@ all : $(NAME)
 
 bonus : $(OBJSB)
 	make -C Libft_clone
-	$(CC) $(OBJSB) $(LIBFT) -o $(NAMEB) -g
+	$(CC) $(OBJSB) $(LIBFT) $(FT_PRINTF) -o $(NAMEB) -g
 
 $(NAME) : $(OBJS)
 	make -C Libft_clone
-	$(CC) $(OBJS) $(LIBFT) -o $(NAME) -g 
+	$(CC) $(OBJS) $(LIBFT)  $(FT_PRINTF) -o $(NAME) -g 
 
 clean : 
 	make clean -C Libft_clone
-	$(RM) *.o
+	$(RM) *.o bonus/*.o
 
 fclean :
 	make fclean -C Libft_clone

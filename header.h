@@ -6,14 +6,13 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 13:28:14 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/02/18 16:37:21 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/02/18 19:06:03 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEADER_H
 # define HEADER_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <limits.h>
 # include "./Libft_clone/libft.h"

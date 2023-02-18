@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilselbon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:20:44 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/01/06 16:20:46 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/02/18 18:55:13 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_push_swap(char **av)
 	nb_de_nb = ft_nombre_de_nombres(av);
 	nombres = ft_verif(nb_de_nb, av);
 	if (!nombres)
-		printf("Error\n");
+		ft_printf("Error\n");
 	if (!ft_ordre(nb_de_nb, nombres))
 	{
 		pile_a = ft_pile_a(nombres, nb_de_nb);

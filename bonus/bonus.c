@@ -6,41 +6,12 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:46:16 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/02/18 16:48:20 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/02/18 19:04:48 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header_bonus.h"
 #include "../header.h"
-
-void	afficher_pile(t_list **pile_a, t_list **pile_b)
-{
-	t_list	*p_a;
-	t_list	*p_b;
-
-	p_a = *pile_a;
-	p_b = *pile_b;
-	while (p_a || p_b)
-	{
-		if (p_a && p_b)
-		{
-			printf("%d	%d\n", p_a->nombre, p_b->nombre);
-			p_a = p_a->next;
-			p_b = p_b->next;
-		}
-		else if (p_a)
-		{
-			printf("%d\n", p_a->nombre);
-			p_a = p_a->next;
-		}
-		else if (p_b)
-		{
-			printf("	%d\n", p_b->nombre);
-			p_b = p_b->next;
-		}
-	}
-	printf("-	-\na	b\n");
-}
 
 void	ft_free_et_exit(char *str, t_list **pile_a, t_list **pile_b)
 {
@@ -72,14 +43,33 @@ int	ft_verification(t_list **pile_a, t_list **pile_b)
 	return (1);
 }
 
+void	ft_attribution2(char *str, t_list **pile_a, t_list **pile_b)
+{
+	if (ft_memcmp(str, "pa\n", ft_strlen(str)) == 0)
+		ft_pa_pb_bn(pile_b, pile_a);
+	else if (ft_memcmp(str, "pb\n", ft_strlen(str)) == 0)
+		ft_pa_pb_bn(pile_a, pile_b);
+	else if (ft_memcmp(str, "rra\n", ft_strlen(str)) == 0)
+		ft_rra_rrb_bn(pile_a);
+	else if (ft_memcmp(str, "rrb\n", ft_strlen(str)) == 0)
+		ft_rra_rrb_bn(pile_b);
+	else if (ft_memcmp(str, "rrr\n", ft_strlen(str)) == 0)
+		ft_rrr_bn(pile_a, pile_b);
+	else
+	{
+		ft_printf("Error\n");
+		ft_free_et_exit(str, pile_a, pile_b);
+	}
+}
+
 void	ft_attribution(char *str, t_list **pile_a, t_list **pile_b)
 {
 	if (!str)
 	{
 		if (ft_verification(pile_a, pile_b) == 0)
-			printf("OK\n");
+			ft_printf("OK\n");
 		else
-			printf("KO\n");
+			ft_printf("KO\n");
 		ft_free_et_exit(str, pile_a, pile_b);
 	}
 	else if (ft_memcmp(str, "sa\n", ft_strlen(str)) == 0)
@@ -94,21 +84,8 @@ void	ft_attribution(char *str, t_list **pile_a, t_list **pile_b)
 		ft_ra_rb_bn(pile_b);
 	else if (ft_memcmp(str, "rr\n", ft_strlen(str)) == 0)
 		ft_ra_rb_bn(pile_a);
-	else if (ft_memcmp(str, "pa\n", ft_strlen(str)) == 0)
-		ft_pa_pb_bn(pile_b, pile_a);
-	else if (ft_memcmp(str, "pb\n", ft_strlen(str)) == 0)
-		ft_pa_pb_bn(pile_a, pile_b);
-	else if (ft_memcmp(str, "rra\n", ft_strlen(str)) == 0)
-		ft_rra_rrb_bn(pile_a);
-	else if (ft_memcmp(str, "rrb\n", ft_strlen(str)) == 0)
-		ft_rra_rrb_bn(pile_b);
-	else if (ft_memcmp(str, "rrr\n", ft_strlen(str)) == 0)
-		ft_rrr_bn(pile_a, pile_b);
 	else
-	{
-		printf("Error\n");
-		ft_free_et_exit(str, pile_a, pile_b);
-	}
+		ft_attribution2(str, pile_a, pile_b);
 }
 
 void	ft_principale_bn(t_list **pile_a, t_list **pile_b)
