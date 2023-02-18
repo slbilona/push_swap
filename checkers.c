@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilselbon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/06 13:27:39 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/01/06 13:27:44 by ilselbon         ###   ########.fr       */
+/*   Created: 2023/02/18 16:34:01 by ilselbon          #+#    #+#             */
+/*   Updated: 2023/02/18 16:34:02 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	ft_nombre_de_nombres(char **av)
 	return (mots);
 }
 
-void	ft_vide_split(int o, char **temp, int i)
+long int	*ft_vide_split(int o, char **temp, int i, long int *nombres)
 {
 	if (i == 1)
 	{
@@ -89,6 +89,7 @@ void	ft_vide_split(int o, char **temp, int i)
 			free(temp[o]);
 			o--;
 		}
+		free(nombres);
 	}
 	else if (i == 2)
 	{
@@ -96,15 +97,16 @@ void	ft_vide_split(int o, char **temp, int i)
 			free(temp[o++]);
 	}
 	free(temp);
+	return (NULL);
 }
 
-long int	*ft_int_nombres(int nombre, char **av, int i, int j)
+long int	*ft_int_nombres(int nb_de_nb, char **av, int i, int j)
 {
 	long int	*nombres;
 	char		**temp;
 	int			o;
 
-	nombres = (long int *)malloc(sizeof(long int) * (nombre));
+	nombres = (long int *)malloc(sizeof(long int) * (nb_de_nb));
 	if (!nombres)
 		return (NULL);
 	while (i >= 0)
@@ -113,16 +115,13 @@ long int	*ft_int_nombres(int nombre, char **av, int i, int j)
 		o = 0;
 		while (temp[o] && i >= 0)
 		{
+			if (!ft_atoi_booleen(temp[o]))
+				return (ft_vide_split(o, temp, 1, nombres));
 			nombres[i] = ft_atoi_long_int(temp[o]);
-			if (nombres[i] > 2147483648 || nombres[i] < -2147483647)
-			{
-				ft_vide_split(o, temp, 1);
-				return (free(nombres), NULL);
-			}
 			i--;
 			o++;
 		}
-		ft_vide_split(0, temp, 2);
+		ft_vide_split(0, temp, 2, nombres);
 		j++;
 	}	
 	return (nombres);

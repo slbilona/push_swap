@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dix_ou_plus.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/18 16:34:25 by ilselbon          #+#    #+#             */
+/*   Updated: 2023/02/18 16:34:26 by ilselbon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "header.h"
 
 /*
@@ -58,32 +70,6 @@ void	ft_fini_a(t_list **pile_a, t_list *place_une)
 			ft_rra_rrb(pile_a, 'a');
 		ft_fini_a(pile_a, place_une);
 	}
-}
-
-void	ft_trier_haut(t_list **pile_a, t_list **pile_b, int mouv)
-{
-	int	i;
-
-	i = 0;
-	while (i < mouv)
-	{
-		ft_ra_rb(pile_a, 'a');
-		i++;
-	}
-	ft_pa_pb(pile_b, pile_a, 'a');
-}
-
-void	ft_trier_bas(t_list **pile_a, t_list **pile_b, int mouv)
-{
-	int	i;
-
-	i = 0;
-	while (i < mouv)
-	{
-		ft_rra_rrb(pile_a, 'a');
-		i++;
-	}
-	ft_pa_pb(pile_b, pile_a, 'a');
 }
 
 void	ft_position(t_list **pile)

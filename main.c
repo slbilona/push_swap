@@ -36,8 +36,8 @@ int	ft_push_swap(char **av)
 		ft_principale(&premier_a, &premier_b, nb_de_nb);
 		ft_vide_liste(&premier_a);
 		ft_vide_liste(&premier_b);
-		free(nombres);
 	}
+	free(nombres);
 	return (0);
 }
 

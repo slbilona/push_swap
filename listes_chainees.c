@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   listes_chainees.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/18 16:37:30 by ilselbon          #+#    #+#             */
+/*   Updated: 2023/02/18 16:38:30 by ilselbon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "header.h"
 
 /*
@@ -83,18 +95,4 @@ t_list	*ft_lstlast(t_list *lst)
 		actuel = actuel->next;
 	}
 	return (temp);
-}
-
-void	ft_vide_liste(t_list **pile)
-{
-	t_list	*actuel;
-	t_list	*temp;
-
-	actuel = *pile;
-	while (actuel)
-	{
-		temp = actuel;
-		actuel = actuel->next;
-		free(temp);
-	}
 }

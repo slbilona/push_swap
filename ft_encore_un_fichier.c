@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_encore_un_fichier.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/18 16:35:48 by ilselbon          #+#    #+#             */
+/*   Updated: 2023/02/18 16:36:09 by ilselbon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "header.h"
 
 t_list	*ft_choix_b(t_list **pile_a, t_list **pile_b, int nb_de_nb)
@@ -83,4 +95,30 @@ void	ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int nb_de_nb)
 				ft_calcul(pile_a, *pile_b, nb_de_nb) - 1);
 		ft_je_sais_pas_ptn(pile_a, pile_b, nb_de_nb);
 	}
+}
+
+void	ft_trier_haut(t_list **pile_a, t_list **pile_b, int mouv)
+{
+	int	i;
+
+	i = 0;
+	while (i < mouv)
+	{
+		ft_ra_rb(pile_a, 'a');
+		i++;
+	}
+	ft_pa_pb(pile_b, pile_a, 'a');
+}
+
+void	ft_trier_bas(t_list **pile_a, t_list **pile_b, int mouv)
+{
+	int	i;
+
+	i = 0;
+	while (i < mouv)
+	{
+		ft_rra_rrb(pile_a, 'a');
+		i++;
+	}
+	ft_pa_pb(pile_b, pile_a, 'a');
 }

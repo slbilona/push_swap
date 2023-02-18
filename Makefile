@@ -3,18 +3,21 @@ SRCS = main.c \
 	checkers2.c \
 	ft_atoi_long_int.c \
 	listes_chainees.c \
+	listes_chainees2.c \
 	mouvements.c \
 	ft_algo.c \
-	ft_algo_b.c \
 	ft_index.c \
 	dix_ou_plus.c \
 	ft_encore_un_fichier.c \
 
-SRCSB = bonus.c \
+SRCSB = bonus/bonus.c \
 	checkers.c \
+	checkers2.c \
 	ft_atoi_long_int.c \
 	listes_chainees.c \
-	mouvements_bn.c \
+	listes_chainees2.c \
+	bonus/mouvements_bn.c \
+	bonus/main_bonus.c \
 
 LIBFT = Libft_clone/libft.a
 
@@ -48,7 +51,7 @@ clean :
 
 fclean :
 	make fclean -C Libft_clone
-	$(RM) *.o $(NAME) $(NAMEB)
+	$(RM) *.o bonus/*.o $(NAME) $(NAMEB)
 
 re : fclean all
 

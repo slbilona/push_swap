@@ -1,53 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checkers2.c                                        :+:      :+:    :+:   */
+/*   listes_chainees2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/18 16:34:16 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/02/18 16:34:17 by ilselbon         ###   ########.fr       */
+/*   Created: 2023/02/18 16:38:01 by ilselbon          #+#    #+#             */
+/*   Updated: 2023/02/18 16:38:50 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int	ft_doublons(long int *nombres, int nb_de_nb)
+void	ft_vide_liste(t_list **pile)
 {
-	int	i;
-	int	j;
+	t_list	*actuel;
+	t_list	*temp;
 
-	i = 0;
-	j = 0;
-	while (i < (nb_de_nb - 1))
+	actuel = *pile;
+	while (actuel)
 	{
-		j = i + 1;
-		while (j < nb_de_nb)
-		{
-			if (nombres[i] == nombres[j])
-			{
-				free(nombres);
-				return (0);
-			}
-			j++;
-		}
-		i++;
+		temp = actuel;
+		actuel = actuel->next;
+		free(temp);
 	}
-	return (1);
 }
 
-int	ft_ordre(int taille, long int *nombres)
+t_list	*ft_almostlast(t_list *lst)
 {
-	int	i;
+	t_list	*actuel;
+	t_list	*temp;
+	t_list	*pretemp;
 
-	i = 0;
-	if (!nombres)
-		return (1);
-	while (i < (taille - 1))
+	actuel = lst;
+	temp = NULL;
+	if (!lst)
+		return (NULL);
+	while (actuel)
 	{
-		if (nombres[i] < nombres[i + 1])
-			return (0);
-		i++;
+		pretemp = temp;
+		temp = actuel;
+		actuel = actuel->next;
 	}
-	return (1);
+	return (pretemp);
 }
