@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 17:12:38 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/02/18 19:28:04 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/02/18 19:56:00 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,16 @@ int	ft_checker(char **av)
 	ft_principale_bn(&premier_a, &premier_b);
 	ft_vide_liste(&premier_a);
 	ft_vide_liste(&premier_b);
-	return (0);
+	return (1);
 }
 
 int	main(int ac, char **av)
 {
 	if (ac >= 2)
-		ft_checker(av);
+	{
+		if (ft_checker(av))
+			return (0);
+		else
+			return (1);
+	}
 }

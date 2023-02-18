@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 13:28:14 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/02/18 19:06:03 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/02/18 20:05:26 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_list		*ft_lstlast(t_list *lst);
 t_list		*ft_almostlast(t_list *lst);
 
 //autre
-int			ft_push_swap(char **av);
+int			ft_push_swap(int nb_de_nb, char **av);
 int			ft_atoi_booleen(const char *nptr);
 void		ft_tri_int(long int *nombres, int nb_de_nb);
 void		ft_place(long int *nombres, t_list **pile_a, int nb_de_nb);

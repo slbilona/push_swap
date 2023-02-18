@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:46:16 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/02/18 19:25:40 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/02/18 19:52:06 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_free_et_exit(char *str, t_list **pile_a, t_list **pile_b)
 	ft_vide_liste(pile_a);
 	ft_vide_liste(pile_b);
 	get_next_line(-1);
-	exit(EXIT_FAILURE);
+	exit(EXIT_SUCCESS);
 }
 
 int	ft_verification(t_list **pile_a, t_list **pile_b)
