@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:46:16 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/02/18 19:04:48 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/02/18 19:25:40 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	ft_attribution(char *str, t_list **pile_a, t_list **pile_b)
 	else if (ft_memcmp(str, "rb\n", ft_strlen(str)) == 0)
 		ft_ra_rb_bn(pile_b);
 	else if (ft_memcmp(str, "rr\n", ft_strlen(str)) == 0)
-		ft_ra_rb_bn(pile_a);
+		ft_rr_bn(pile_a, pile_b);
 	else
 		ft_attribution2(str, pile_a, pile_b);
 }

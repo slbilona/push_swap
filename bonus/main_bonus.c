@@ -6,14 +6,14 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 17:12:38 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/02/18 19:16:06 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/02/18 19:28:04 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 #include "header_bonus.h"
 
-int ft_checker(char **av)
+int	ft_checker(char **av)
 {
 	long int	*nombres;
 	t_list		*pile_a;
@@ -41,8 +41,5 @@ int ft_checker(char **av)
 int	main(int ac, char **av)
 {
 	if (ac >= 2)
-	{
 		ft_checker(av);
-	}
-	return (0);
 }

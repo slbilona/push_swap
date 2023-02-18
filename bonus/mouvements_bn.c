@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 17:13:18 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/02/18 17:14:37 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/02/18 19:26:53 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,28 +95,9 @@ void	ft_rra_rrb_bn(t_list **pile)
 
 void	ft_rrr_bn(t_list **pile_a, t_list **pile_b)
 {
-	t_list	*chaine1;
-	t_list	*av_dernier;
-	t_list	*dernier;
-
-	if (*pile_a && *pile_b)
+	if (*pile_a || *pile_b)
 	{
-		dernier = ft_lstlast(*pile_a);
-		chaine1 = *pile_a;
-		av_dernier = ft_almostlast(*pile_a);
-		av_dernier->next = NULL;
-		dernier->next = chaine1;
-		*pile_a = dernier;
-		if (ft_lstsize(*pile_b) >= 3)
-		{
-			dernier = ft_lstlast(*pile_b);
-			chaine1 = *pile_b;
-			av_dernier = ft_almostlast(*pile_b);
-			av_dernier->next = NULL;
-			dernier->next = chaine1;
-			*pile_b = dernier;
-		}
-		else if (ft_lstsize(*pile_b) == 2)
-			ft_sa_sb_bn(pile_b);
+		ft_rra_rrb_bn(pile_a);
+		ft_rra_rrb_bn(pile_b);
 	}
 }
