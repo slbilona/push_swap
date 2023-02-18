@@ -1,5 +1,6 @@
 SRCS = main.c \
 	checkers.c \
+	checkers2.c \
 	ft_atoi_long_int.c \
 	listes_chainees.c \
 	mouvements.c \

@@ -1,6 +1,6 @@
 #include "header.h"
 
-t_list *ft_choix_b(t_list **pile_a, t_list **pile_b, int nb_de_nb)
+t_list	*ft_choix_b(t_list **pile_a, t_list **pile_b, int nb_de_nb)
 {
 	t_list	*actuel;
 	t_list	*meilleur;
@@ -27,23 +27,18 @@ t_list *ft_choix_b(t_list **pile_a, t_list **pile_b, int nb_de_nb)
 	return (meilleur);
 }
 
-void	ft_placer_meileur(t_list *meilleur, t_list **pile_b, t_list **pile_a, int nb_de_nb)
+void	ft_placer_meileur(t_list *meilleur, t_list **pile_b,
+							t_list **pile_a, int nb_de_nb)
 {
 	int	mouv;
-	int pos_meilleur;
-	int pos_duo;
+	int	pos_meilleur;
+	int	pos_duo;
 
 	pos_duo = ft_duo(pile_a, meilleur, nb_de_nb);
 	pos_meilleur = meilleur->position;
 	if (pos_meilleur <= (ft_lstsize(*pile_b) / 2))
-	{
-		mouv = pos_meilleur;
-		while (mouv)
-		{
+		while (pos_meilleur--)
 			ft_ra_rb(pile_b, 'b');
-			mouv--;
-		}
-	}
 	else
 	{
 		mouv = ft_lstsize(*pile_b) - pos_meilleur;
@@ -57,11 +52,8 @@ void	ft_placer_meileur(t_list *meilleur, t_list **pile_b, t_list **pile_a, int n
 				pos_duo--;
 			}
 		}
-		while (mouv)
-		{
+		while (mouv--)
 			ft_rra_rrb(pile_b, 'b');
-			mouv--;
-		}
 	}
 }
 
@@ -79,7 +71,8 @@ void	ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int nb_de_nb)
 			ft_fini_a(pile_a, ft_emplacement(pile_a, 0));
 			return ;
 		}
-		ft_placer_meileur(ft_choix_b(pile_a, pile_b, nb_de_nb), pile_b, pile_a, nb_de_nb);
+		ft_placer_meileur(ft_choix_b(pile_a, pile_b, nb_de_nb),
+			pile_b, pile_a, nb_de_nb);
 		ft_position(pile_a);
 		ft_position(pile_b);
 		if ((ft_lstsize(*pile_a) / 2) <= ft_duo(pile_a, *pile_b, nb_de_nb))
