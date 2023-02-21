@@ -8,7 +8,7 @@ SRCS = main.c \
 	ft_algo.c \
 	ft_index.c \
 	dix_ou_plus.c \
-	ft_encore_un_fichier.c \
+	ft_index2.c \
 
 SRCSB = bonus/bonus.c \
 	checkers.c \

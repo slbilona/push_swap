@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 13:28:14 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/02/18 20:05:26 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/02/20 19:30:11 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void		ft_algo(t_list **pile_a);
 void		ft_position(t_list **pile);
 void		ft_que_3(t_list **pile_a, t_list **pile_b, int ac);
 void		ft_principale(t_list **pile_a, t_list **pile_b, int ac);
-void		ft_je_sais_pas_ptn(t_list **pile_a, t_list **pile_b, int nb_de_nb);
+void		ft_gros_algo(t_list **pile_a, t_list **pile_b, int nb_de_nb);
 void		ft_trier_bas(t_list **pile_a, t_list **pile_b, int mouv);
 void		ft_trier_haut(t_list **pile_a, t_list **pile_b, int mouv);
 void		ft_fini_a(t_list **pile_a, t_list *place_une);
