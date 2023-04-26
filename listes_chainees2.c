@@ -26,6 +26,7 @@ void	ft_vide_liste(t_list **pile)
 	}
 }
 
+// trouver l'avant-dernier millon de la liste chainee
 t_list	*ft_almostlast(t_list *lst)
 {
 	t_list	*actuel;
